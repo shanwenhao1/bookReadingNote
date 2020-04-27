@@ -1,11 +1,11 @@
 package main
 
-import "advanceGoProgramming/chapter2/cgoMemory/cgoM"
+import "advanceGoProgramming/charpter3/pkg"
 
 func main() {
 	//cgo.BaseCgo()
-	//chapter1.RunFunc()
-	//chapter1.ContextRun()
+	//charpter1.RunFunc()
+	//charpter1.ContextRun()
 	//cgo.BaseCgo()
 	//cgo2.Hello()
 	//cgo3.Hello()
@@ -14,5 +14,7 @@ func main() {
 	//sort2.SortRun()
 	//cToGo.MemoryRun()
 	//goToC.MemoryRun()
-	cgoM.Run()
+	//cgoM.Run()
+	//pkg.AssemblyRun()
+	pkg.Hello()
 }
