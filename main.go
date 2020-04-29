@@ -1,6 +1,6 @@
 package main
 
-import "advanceGoProgramming/charpter3/pkg"
+import "advanceGoProgramming/charpter4/rpcSafe"
 
 func main() {
 	//cgo.BaseCgo()
@@ -16,5 +16,8 @@ func main() {
 	//goToC.MemoryRun()
 	//cgoM.Run()
 	//pkg.AssemblyRun()
-	pkg.Hello()
+	//pkg.Hello()
+	//begin.HelloClient()
+	//rpcSafe.HelloClient()
+	rpcSafe.HelloJsonClient()
 }
