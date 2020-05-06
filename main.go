@@ -1,6 +1,6 @@
 package main
 
-import "advanceGoProgramming/charpter4/rpcSafe"
+import "advanceGoProgramming/charpter4/protobuf/rpcWatch"
 
 func main() {
 	//cgo.BaseCgo()
@@ -19,5 +19,6 @@ func main() {
 	//pkg.Hello()
 	//begin.HelloClient()
 	//rpcSafe.HelloClient()
-	rpcSafe.HelloJsonClient()
+	//rpcSafe.HelloJsonClient()
+	rpcWatch.WatchClient()
 }
