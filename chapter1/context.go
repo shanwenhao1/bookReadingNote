@@ -1,4 +1,4 @@
-package charpter1
+package chapter1
 
 import (
 	"context"

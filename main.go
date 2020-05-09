@@ -1,11 +1,11 @@
 package main
 
-import "advanceGoProgramming/charpter5/hashFunc"
+import "advanceGoProgramming/chapter5/hashFunc"
 
 func main() {
 	//cgo.BaseCgo()
-	//charpter1.RunFunc()
-	//charpter1.ContextRun()
+	//chapter1.RunFunc()
+	//chapter1.ContextRun()
 	//cgo.BaseCgo()
 	//cgo2.Hello()
 	//cgo3.Hello()
