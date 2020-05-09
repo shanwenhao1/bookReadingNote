@@ -1,6 +1,25 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
-	"rootPath": "awesomeTestProject"
+	"package": [
+		{
+			"checksumSHA1": "QmQM3qne/lMOPAVB3q7tg5MPkQY=",
+			"path": "github.com/go-playground/validator",
+			"revision": "c68441b7f4748b48ad9a0c9a79d346019730e207",
+			"revisionTime": "2020-02-09T17:35:38Z"
+		},
+		{
+			"checksumSHA1": "KM/GF8fj7ISg95SI3ahcAz6J03E=",
+			"path": "github.com/juju/ratelimit",
+			"revision": "f60b32039441cd828005f82f3a54aafd00bc9882",
+			"revisionTime": "2019-10-02T06:26:51Z"
+		},
+		{
+			"checksumSHA1": "xYpciRGwLkuAgxCAMeQL5vV0DX8=",
+			"path": "github.com/spaolacci/murmur3",
+			"revision": "539464a789e9b9f01bc857458ffe2c5c1a2ed382",
+			"revisionTime": "2019-03-17T07:47:36Z"
+		}
+	],
+	"rootPath": "advanceGoProgramming"
 }

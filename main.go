@@ -1,6 +1,6 @@
 package main
 
-import "advanceGoProgramming/charpter4/protobuf/rpcWatch"
+import "advanceGoProgramming/charpter5/hashFunc"
 
 func main() {
 	//cgo.BaseCgo()
@@ -20,5 +20,15 @@ func main() {
 	//begin.HelloClient()
 	//rpcSafe.HelloClient()
 	//rpcSafe.HelloJsonClient()
-	rpcWatch.WatchClient()
+	//rpcWatch.WatchClient()
+
+	/*
+		chapter 5
+	*/
+	//baseCgi.BaseServer()
+	//baseCgi.BaseMiddleware()
+	//baseCgi.TestValidate()
+	//baseCgi.ValidateRun()
+	//tokenLimit.BucketRun()
+	hashFunc.MurmurHash()
 }
