@@ -3,10 +3,46 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "seQuyNDriJ48+5SyRJCkPtboKCE=",
+			"path": "github.com/PuerkitoBio/goquery",
+			"revision": "89946c829f29a2c154667e6194d4f409d8abcbde",
+			"revisionTime": "2020-04-19T15:21:48Z"
+		},
+		{
+			"checksumSHA1": "LrRqwol6XY4jfIK9Y6x6VKO8YJM=",
+			"path": "github.com/antchfx/htmlquery",
+			"revision": "f04d0ddf47077a0882a3cfe6314b792c0ef526f7",
+			"revisionTime": "2020-04-29T12:59:14Z"
+		},
+		{
+			"checksumSHA1": "5kM9h85jV8QgOH1yqhH6CeZ63w4=",
+			"path": "github.com/antchfx/xmlquery",
+			"revision": "c43a9ea44a41141abd40cc2125be9558b5ae8763",
+			"revisionTime": "2020-04-24T13:40:19Z"
+		},
+		{
+			"checksumSHA1": "00F8jZpMULZtoj28G6FU9opTJv4=",
+			"path": "github.com/bwmarrin/snowflake",
+			"revision": "c09e69ae59935edf6d85799e858c26de86b04cb3",
+			"revisionTime": "2019-04-12T22:30:32Z"
+		},
+		{
 			"checksumSHA1": "QmQM3qne/lMOPAVB3q7tg5MPkQY=",
 			"path": "github.com/go-playground/validator",
 			"revision": "c68441b7f4748b48ad9a0c9a79d346019730e207",
 			"revisionTime": "2020-02-09T17:35:38Z"
+		},
+		{
+			"checksumSHA1": "pTKs/cUUIPqw5hX3+OL+PtLMqhU=",
+			"path": "github.com/gobwas/glob",
+			"revision": "e7a84e9525fe90abcda167b604e483cc959ad4aa",
+			"revisionTime": "2018-09-11T21:33:45Z"
+		},
+		{
+			"checksumSHA1": "acfZDH8SbTyjMFk/xw6LchDHFIs=",
+			"path": "github.com/gocolly/colly",
+			"revision": "f9898dc044239a0469ea23ed4ccf8114aeff3e7d",
+			"revisionTime": "2020-05-10T22:59:27Z"
 		},
 		{
 			"checksumSHA1": "KM/GF8fj7ISg95SI3ahcAz6J03E=",
@@ -15,10 +51,76 @@
 			"revisionTime": "2019-10-02T06:26:51Z"
 		},
 		{
+			"checksumSHA1": "HFu1+LphmHukvAnzsxDjS10fm7E=",
+			"path": "github.com/kennygrant/sanitize",
+			"revision": "06ec0d0dbcd497d01e5189b16f5263f712e61a8e",
+			"revisionTime": "2018-08-06T07:34:57Z"
+		},
+		{
+			"checksumSHA1": "9Aoisa7A4d17LuuCjxm8WHrdWOU=",
+			"path": "github.com/saintfish/chardet",
+			"revision": "3af4cd4741ca4f3eb0c407c034571a6fb0ea529c",
+			"revisionTime": "2012-08-16T06:12:21Z"
+		},
+		{
+			"checksumSHA1": "+QWAZOZFzgT33mLRzuMB8ZrcL/k=",
+			"path": "github.com/sony/sonyflake",
+			"revision": "59cd942daa500fe4a78ea5f3960bbaf881f52211",
+			"revisionTime": "2019-10-07T07:50:43Z"
+		},
+		{
 			"checksumSHA1": "xYpciRGwLkuAgxCAMeQL5vV0DX8=",
 			"path": "github.com/spaolacci/murmur3",
 			"revision": "539464a789e9b9f01bc857458ffe2c5c1a2ed382",
 			"revisionTime": "2019-03-17T07:47:36Z"
+		},
+		{
+			"checksumSHA1": "RJvdL9xokvE81eiKPPsdiwcwPT8=",
+			"path": "github.com/temoto/robotstxt",
+			"revision": "7c448aca1487b30704ec753041b76603f29abd3f",
+			"revisionTime": "2019-11-26T11:18:08Z"
+		},
+		{
+			"checksumSHA1": "0Z4dx5j0q3YlhqjZYnQtdV3Qapc=",
+			"path": "google.golang.org/appengine/internal",
+			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
+			"revisionTime": "2020-04-22T17:14:01Z"
+		},
+		{
+			"checksumSHA1": "9xzqDBpjlYLB36y9kPSXF6l5Q+I=",
+			"path": "google.golang.org/appengine/internal/base",
+			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
+			"revisionTime": "2020-04-22T17:14:01Z"
+		},
+		{
+			"checksumSHA1": "L6fiwN+edenl0wD0IHc6GT4l8n8=",
+			"path": "google.golang.org/appengine/internal/datastore",
+			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
+			"revisionTime": "2020-04-22T17:14:01Z"
+		},
+		{
+			"checksumSHA1": "MMMI+vbwug+O5LAK6Rc5e+uCm/8=",
+			"path": "google.golang.org/appengine/internal/log",
+			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
+			"revisionTime": "2020-04-22T17:14:01Z"
+		},
+		{
+			"checksumSHA1": "H9LGsS5QcwUrflHXzTJY7cIkGvg=",
+			"path": "google.golang.org/appengine/internal/remote_api",
+			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
+			"revisionTime": "2020-04-22T17:14:01Z"
+		},
+		{
+			"checksumSHA1": "l/L64lKUL+E4e1FP281rU55LmYg=",
+			"path": "google.golang.org/appengine/internal/urlfetch",
+			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
+			"revisionTime": "2020-04-22T17:14:01Z"
+		},
+		{
+			"checksumSHA1": "k2vHVgCk1AqIZravw4ZP3NbiRJM=",
+			"path": "google.golang.org/appengine/urlfetch",
+			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
+			"revisionTime": "2020-04-22T17:14:01Z"
 		}
 	],
 	"rootPath": "advanceGoProgramming"
