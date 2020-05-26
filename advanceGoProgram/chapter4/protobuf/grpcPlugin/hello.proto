@@ -1,0 +1,14 @@
+// 生成Go代码
+// protoc --go_out=.hello.proto
+syntax = "proto3";
+
+package helloProto;
+
+message String{
+    string value = 1;
+}
+
+// protoc --go_out=plugins=grpc:. hello.proto
+service HelloService{
+    rpc Hello (String) returns (String);
+}

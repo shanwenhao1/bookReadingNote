@@ -1,7 +1,7 @@
 package main
 
 import (
-	"advanceGoProgramming/chapter6/worm"
+	"advanceGoProgramming/advanceGoProgram/chapter6/worm"
 	"context"
 	"fmt"
 )
