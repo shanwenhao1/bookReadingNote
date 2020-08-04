@@ -2,5 +2,10 @@
 
 ## 章节要点
 - [Chapter 1 - 逃离单体炼狱](doc/chapter1/README.md)
+- [Chapter 2 - 服务的拆分策略](doc/chapter2/README.md)
 
 ## [Microservice Patterns PDF](Microservice Patterns.pdf)
+
+## 个人觉得要点
+
+架构的重要性在于, 它帮助应用程序满足了第二类需求: 非功能性需求(质量属性需求)
