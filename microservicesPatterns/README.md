@@ -7,6 +7,8 @@
 
 ## [Microservice Patterns PDF](Microservice Patterns.pdf)
 
+## [微服务开发具体框架流程---自己总结](server development.md)
+
 ## 个人觉得要点
 
 架构的重要性在于, 它帮助应用程序满足了第二类需求: 非功能性需求(质量属性需求)

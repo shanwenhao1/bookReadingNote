@@ -45,6 +45,18 @@
 			"revisionTime": "2020-05-10T22:59:27Z"
 		},
 		{
+			"checksumSHA1": "5vjcTwHKEtsOEqZjau6Xhz78INk=",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": "d04d7b157bb510b1e0c10132224b616ac0e26b17",
+			"revisionTime": "2020-05-14T20:44:37Z"
+		},
+		{
+			"checksumSHA1": "HgBwyMLUlk0PUjJZ0GHVAl+C5c8=",
+			"path": "github.com/golang/protobuf/protoc-gen-go",
+			"revision": "d04d7b157bb510b1e0c10132224b616ac0e26b17",
+			"revisionTime": "2020-05-14T20:44:37Z"
+		},
+		{
 			"checksumSHA1": "KM/GF8fj7ISg95SI3ahcAz6J03E=",
 			"path": "github.com/juju/ratelimit",
 			"revision": "f60b32039441cd828005f82f3a54aafd00bc9882",
@@ -121,7 +133,13 @@
 			"path": "google.golang.org/appengine/urlfetch",
 			"revision": "553959209a20f3be281c16dd5be5c740a893978f",
 			"revisionTime": "2020-04-22T17:14:01Z"
+		},
+		{
+			"checksumSHA1": "JoGOvOxVEOVvH7rgDmBALUQBR/c=",
+			"path": "google.golang.org/grpc",
+			"revision": "7d8921505e1b4d41da1c1bbb4ae20a4625aa5476",
+			"revisionTime": "2020-08-12T18:47:16Z"
 		}
 	],
-	"rootPath": "advanceGoProgramming"
+	"rootPath": "bookReadingNote"
 }
