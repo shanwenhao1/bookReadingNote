@@ -1,5 +1,7 @@
 # 阅读书籍笔记整理
 
+本项目使用go mod进行管理. [具体使用](microservicesPatterns/doc/chapter3/README.md)
+
 ## [Go语言高级编程](advanceGoProgram/README.md)
 
 ## [Microservices Patterns](microservicesPatterns/README.md)
