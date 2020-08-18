@@ -135,10 +135,10 @@
 			"revisionTime": "2020-04-22T17:14:01Z"
 		},
 		{
-			"checksumSHA1": "JoGOvOxVEOVvH7rgDmBALUQBR/c=",
+			"checksumSHA1": "92KP0qN5fDjDUCo6l1s1n/Mq2i8=",
 			"path": "google.golang.org/grpc",
-			"revision": "7d8921505e1b4d41da1c1bbb4ae20a4625aa5476",
-			"revisionTime": "2020-08-12T18:47:16Z"
+			"revision": "a3740e5ed326410515aa921bbfe5688595732b77",
+			"revisionTime": "2020-08-14T20:07:10Z"
 		},
 		{
 			"checksumSHA1": "TbBxVdWF8nt1AMjC1KrkOTjPbRQ=",
