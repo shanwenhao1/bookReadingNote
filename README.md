@@ -1,6 +1,8 @@
 # 阅读书籍笔记整理
 
 本项目使用go mod进行管理.
+- `go mod init bookReadingNote`
+- 下载后的依赖存放在`$GOPATH/pkg/mod`
 
 ## [Go语言高级编程](advanceGoProgram/README.md)
 

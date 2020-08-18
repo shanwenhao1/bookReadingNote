@@ -6,7 +6,7 @@ import (
 	"google.golang.org/grpc"
 	"net"
 
-	pb "bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest/test"
+	pb "bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
 )
 
 const (
