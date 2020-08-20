@@ -3,9 +3,22 @@
 本目录是google gRPC示例目录, 演示Go中的gRPC如何使用
 ## 使用步骤
 - 安装依赖
-```bash
-go get google.golang.org/grpc
-```
+    ```bash
+    go get google.golang.org/grpc
+    # 使用mod进行包管理
+    export GO111MODULE=on  # Enable module mode
+    go get github.com/golang/protobuf/protoc-gen-go
+    ```
+- 代码运行, 代码[目录](helloworld), proto文件生成[build.bat](helloworld/helloworld/build.bat)
+    ```bash
+    go run greeter_server/main.go
+    go run greeter_client/main.go
+    ```
+- mock 测试
+    - 安装gomock, [gomock document](https://github.com/golang/mock)
+        ```bash
+        go get github.com/golang/mock/mockgen@v1.4.3
+        ```
 
 
 ## 官方文档

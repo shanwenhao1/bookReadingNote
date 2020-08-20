@@ -12,6 +12,12 @@
 - [allitebooks](http://www.allitebooks.org/)
 - [免费编程中文书籍索引大全](https://github.com/justjavac/free-programming-books-zh_CN)
 
+## 项目build组间
+
+### Go开发
+
+#### Go测试
+- [go mock](project/mock/mockSample/README.md)
 
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)
 
