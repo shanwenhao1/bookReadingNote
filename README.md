@@ -19,6 +19,9 @@
 #### Go测试
 - [go mock](project/mock/mockSample/README.md)
 
+### CI/CD
+[说明文档](project/ci/README.md)
+
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)
 
 Go 1.11以后新增了[GO111MODULE](https://learnku.com/go/t/39086)用模块管理, 淘汰GoPath
