@@ -18,6 +18,9 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
+      # The checkout action is a standard action that you must include in your workflow before other actions when
+      # This step checks out a copy of your repository.
+      - uses: actions/checkout@v2
       - name: project
         uses: shanwenhao1/bookReadingNote@v1
         with:
