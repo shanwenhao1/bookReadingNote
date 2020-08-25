@@ -1,33 +1,58 @@
-#example: https://github.com/golangci/golangci-lint/blob/master/.github/workflows/pr.yml
-name: project
+name: microservice
 # This workflow is triggered on pushes to the repository.
-on:
-  push:
-    branches:
-      - master
-    tags:
-      - v*
-    pull_request:
-#  paths:
-##    - 'test/*'
-#    - 'bookReadingNote/project/mock/mockSample'
+on: [push]
+
 jobs:
   build:
     # Job name is microserviceTest
-    name: project Test
+    name: microserviceTest
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      # The checkout action is a standard action that you must include in your workflow before other actions when
-      # This step checks out a copy of your repository.
-      - uses: actions/checkout@v2
-      - name: project
-        uses: shanwenhao1/bookReadingNote@v1
+      - name:
+      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
+      - name: Hello world
+        uses: actions/hello-world-javascript-action@v1
         with:
-          version: latest
+          who-to-greet: 'Mona the Octocat'
+        id: hello
       # This step prints an output (time) from the previous step's action.
-      - name: mock Test
-        run: go test -v -coverprofile cover.out bookReadingNote\project\mock\myMock
+      - name: Echo the greeting's time
+        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+
+
+
+
+##example: https://github.com/golangci/golangci-lint/blob/master/.github/workflows/pr.yml
+#name: project
+## This workflow is triggered on pushes to the repository.
+#on:
+#  push:
+#    branches:
+#      - master
+#    tags:
+#      - v*
+#    pull_request:
+##  paths:
+###    - 'test/*'
+##    - 'bookReadingNote/project/mock/mockSample'
+#jobs:
+#  build:
+#    # Job name is microserviceTest
+#    name: project Test
+#    # This job runs on Linux
+#    runs-on: ubuntu-latest
+#    steps:
+#      # The checkout action is a standard action that you must include in your workflow before other actions when
+#      # This step checks out a copy of your repository.
+#      - uses: actions/checkout@v2
+#      - name: project
+#        uses: shanwenhao1/bookReadingNote@v1
+#        with:
+#          version: latest
+#      # This step prints an output (time) from the previous step's action.
+#      - name: mock Test
+#        run: go test -v -coverprofile cover.out bookReadingNote\project\mock\myMock
 
 
 
