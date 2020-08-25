@@ -17,6 +17,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mockTest
-        uses: shanwenhao1/bookReadingNote
         run: go test bookReadingNote/project/mock/myMock
 #        go test bookReadingNote/project/mock/mockSample
