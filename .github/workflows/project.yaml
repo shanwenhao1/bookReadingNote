@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: shanwenhao1\bookReadingNote
+    - uses: shanwenhao1/bookReadingNote@v1
 
     - name: mockTest
       run: go test -v -coverprofile cover.out bookReadingNote\project\mock\myMock
