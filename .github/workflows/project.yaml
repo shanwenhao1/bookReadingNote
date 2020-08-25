@@ -11,15 +11,12 @@ on:
 #    - 'bookReadingNote/project/mock/mockSample'
 
 jobs:
-  build:
-    # Job name is projectTest
-    name: projectTest
-    # This job runs on Linux
+  test:
+    name: Test on node
     runs-on: ubuntu-latest
+
     steps:
-      - name: use bookReadingNote
-        uses: shanwenhao1/bookReadingNote
-      - name: mockTest
-        run: go test -v -coverprofile cover.out .\project\mock\myMock\
-#        go test bookReadingNote/project/mock/mockSample
-#  go test -v -coverprofile cover.out .\project\mock\myMock\
+    - uses: shanwenhao1/bookReadingNote
+
+    - name: mockTest
+      run: go test -v -coverprofile cover.out bookReadingNote\project\mock\myMock
