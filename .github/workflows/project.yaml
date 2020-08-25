@@ -23,7 +23,7 @@ jobs:
         uses: shanwenhao1/bookReadingNote@v1
         with:
           version: latest
-  projectTest:
+  Test:
     needs: bookReadingNote # run after bookReadingNote action to not produce duplicated errors
     runs-on: ubuntu-latest
     steps:
