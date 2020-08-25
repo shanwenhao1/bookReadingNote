@@ -6,3 +6,8 @@
     - 在仓库创建`.github/workflows`目录
     - 在`.github/workflows`目录下创建`.yaml`文件的workflow file(可以创建多个)
 - 配置`workflow`, [参考](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
+
+
+
+## 参考
+[repository checkout工具](https://github.com/actions/checkout)
