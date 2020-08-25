@@ -1,6 +1,13 @@
 name: project
 # This workflow is triggered on pushes to the repository.
-on: [push]
+on:
+  push:
+    branches:
+      - master
+#    tags:
+#      - v1
+#  paths:
+#    - 'test/*'
 
 jobs:
   build:
@@ -10,6 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mockTest
-#        uses: shanwenhao1/bookReadingNote
+        uses: shanwenhao1/bookReadingNote
         run: go test bookReadingNote/project/mock/myMock
 #        go test bookReadingNote/project/mock/mockSample
