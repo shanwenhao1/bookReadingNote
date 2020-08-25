@@ -17,5 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mockTest
-        run: go test bookReadingNote/project/mock/myMock
+        run: go test -v -coverprofile cover.out .\project\mock\myMock\
 #        go test bookReadingNote/project/mock/mockSample
+#  go test -v -coverprofile cover.out .\project\mock\myMock\
