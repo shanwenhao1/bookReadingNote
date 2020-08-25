@@ -18,7 +18,7 @@ jobs:
   bookReadingNote:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v2
       - name: project
         uses: shanwenhao1/bookReadingNote@v1
         with:
@@ -27,9 +27,9 @@ jobs:
     needs: bookReadingNote # run after bookReadingNote action to not produce duplicated errors
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v2
       - name: Install Go
-        uses: actions/setup-go@v2
+#        uses: actions/setup-go@v2
         with:
           go-version: 1.15 # test only the latest go version to speed up CI
       - name: mock Test
