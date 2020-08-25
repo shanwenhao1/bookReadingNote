@@ -1,22 +1,36 @@
+#example: https://github.com/golangci/golangci-lint/blob/master/.github/workflows/pr.yml
 name: project
 # This workflow is triggered on pushes to the repository.
 on:
   push:
     branches:
       - master
-#    tags:
-#      - v1
+    tags:
+      - v*
+    pull_request:
 #  paths:
 ##    - 'test/*'
 #    - 'bookReadingNote/project/mock/mockSample'
 
 jobs:
-  test:
-    name: Test on node
+  # We already run the current project in tests, but here we test
+  # our GitHub action with the latest stable project.
+  bookReadingNote:
     runs-on: ubuntu-latest
-
     steps:
-#    - uses: shanwenhao1/bookReadingNote@v1
-
-    - name: mockTest
-      run: go test -v -coverprofile cover.out bookReadingNote\project\mock\myMock
+      - uses: actions/checkout@v2
+      - name: project
+        uses: shanwenhao1/bookReadingNote@v1
+        with:
+          version: latest
+  projectTest:
+    needs: bookReadingNote # run after bookReadingNote action to not produce duplicated errors
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15 # test only the latest go version to speed up CI
+      - name: mock Test
+        run: go test -v -coverprofile cover.out bookReadingNote\project\mock\myMock
