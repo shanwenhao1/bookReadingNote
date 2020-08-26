@@ -39,6 +39,6 @@ jobs:
 # --------------------------------------------------- 以下是我添加的本项目test job
     - name: mockTest
       run: |
-        go test -v -coverprofile cover.out bookReadingNote/project/mock/myMock |
+        go test -v -coverprofile cover.out bookReadingNote/project/mock/myMock
         go test -v -coverprofile cover.out bookReadingNote/project/mock/mockSample
 
