@@ -15,6 +15,6 @@ require (
 	github.com/temoto/robotstxt v1.1.1 // indirect
 	golang.org/x/net v0.0.0-20200813134508-3edf25e44fcc
 	google.golang.org/appengine v1.6.6 // indirect
-	google.golang.org/grpc v1.31.0
+	google.golang.org/grpc v1.31.1
 	google.golang.org/protobuf v1.25.0
 )

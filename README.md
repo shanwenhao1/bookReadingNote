@@ -12,7 +12,7 @@
 - [allitebooks](http://www.allitebooks.org/)
 - [免费编程中文书籍索引大全](https://github.com/justjavac/free-programming-books-zh_CN)
 
-## 项目build组间
+## 项目build组件
 
 ### Go开发
 
