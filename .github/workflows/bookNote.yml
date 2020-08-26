@@ -35,6 +35,10 @@ jobs:
 
     - name: Test
       run: go test -v .
-
+# --------------------------------------------------- 以上是github workflow自动生成的模板配置文件
+# --------------------------------------------------- 以下是我添加的本项目test job
     - name: mockTest
-      run: go test -v -coverprofile cover.out bookReadingNote/project/mock/myMock
+      run: |
+        go test -v -coverprofile cover.out bookReadingNote/project/mock/myMock |
+        go test -v -coverprofile cover.out bookReadingNote/project/mock/mockSample
+
