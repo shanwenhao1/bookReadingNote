@@ -45,4 +45,5 @@ jobs:
     - name: gRPCTest
       run: |
         go test -v -coverprofile cover.out bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest
+        go test -v -coverprofile cover.out bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/helloworld
 

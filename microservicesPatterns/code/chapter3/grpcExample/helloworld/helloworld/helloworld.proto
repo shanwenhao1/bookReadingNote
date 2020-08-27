@@ -27,7 +27,7 @@ service Greeter {
   // Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   // Sends another greeting
-  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+  rpc SayHelloAgain (HelloAgainRequest) returns (HelloAgainReply) {}
 }
 
 // The request message containing the user's name. Req消息结构
@@ -38,4 +38,13 @@ message HelloRequest {
 // The response message containing the greetings. Resp结构
 message HelloReply {
   string message = 1;
+}
+
+message HelloAgainRequest{
+  string AgainName = 1;
+}
+
+// The response message containing the greetings. Resp结构
+message HelloAgainReply {
+  string AgainMessage = 1;
 }

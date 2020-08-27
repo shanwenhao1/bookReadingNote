@@ -14,11 +14,9 @@
     go run greeter_server/main.go
     go run greeter_client/main.go
     ```
-- mock 测试
-    - 安装gomock, [gomock document](https://github.com/golang/mock)
-        ```bash
-        go get github.com/golang/mock/mockgen@v1.4.3
-        ```
+- mock 测试, [本项目mock示例](../../../../project/mock/README.md)
+    - simple [mytest](mytest/proto/generate_mock.go) generate file 
+    - gRPC example [helloworld](helloworld/helloworld/generate_mock.go) generate file
 
 
 ## 官方文档

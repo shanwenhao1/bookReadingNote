@@ -8,7 +8,9 @@
 - 配置`workflow`, [参考](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions). 也可使用
 [样板](https://docs.github.com/en/actions/getting-started-with-github-actions/starting-with-preconfigured-workflow-templates)
 
-
+## 示例
+- [github官方示例](../../.github/workflows/workflow.yaml)
+- [本项目CI文件](../../.github/workflows/bookNote.yml)
 
 ## 参考
 [repository checkout工具](https://github.com/actions/checkout)

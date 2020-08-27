@@ -45,7 +45,7 @@ func testSayHello(t *testing.T, client test.HelloServiceClient) {
 	defer cancel()
 	r, err := client.SayHello(ctx, &test.HelloRequest{Username: "my_test"})
 	if err != nil || r.Message != "Mocked Interface" {
-		t.Errorf("mocking failed")
+		t.Errorf("test SayHello failed")
 	}
-	t.Log("ReplyL ", r.Message)
+	t.Log("Reply: ", r.Message)
 }
