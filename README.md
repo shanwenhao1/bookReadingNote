@@ -17,7 +17,7 @@
 ### Go开发
 
 #### Go测试
-- [go mock](project/mock/mockSample/README.md)
+- [go mock](project/mock/README.md)
 
 ### CI/CD
 [说明文档](project/ci/README.md)
