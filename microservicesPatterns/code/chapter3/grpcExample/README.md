@@ -15,7 +15,15 @@
     go run greeter_client/main.go
     ```
 - mock 测试, [本项目mock示例](../../../../project/mock/README.md)
-    - simple [mytest](mytest/proto/generate_mock.go) generate file 
+    - simple [mytest](mytest/proto/generate_mock.go) generate file, 步骤说明
+        - 先定义[proto文件](mytest/proto/test.proto)
+        - 根据[命令](mytest/proto/build.bat)生成rpc code 
+        - 使用:
+            - [服务端](mytest/server/main.go)样例代码
+            - [客户端](mytest/client/main.go)样例代码
+        - 测试:
+            - [mock生成](mytest/proto/generate_mock.go), 生成打桩测试代码
+            - 使用mock生成的code进行打桩测试, [测试文件](mytest/my_test.go)
     - gRPC example [helloworld](helloworld/helloworld/generate_mock.go) generate file
 
 
