@@ -54,6 +54,12 @@
 用于定义消息的格式, 编译器会自动根据这些格式序列化和反序列化代码)
 
 
+### 通信
+- 基于同步远程过程调用模式的通信: 如REST
+- [gRPC](../../code/chapter3/grpcExample/README.md)
+
+### [断路器](../../../project/CircuitAndHystrix/README.md)
+
 ## 相关
 
 [gRPC Document](https://www.grpc.io/docs/)

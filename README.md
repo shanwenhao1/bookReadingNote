@@ -16,6 +16,8 @@
 
 ### Go开发
 
+#### [断路器和熔断](project/CircuitAndHystrix/README.md)
+
 #### Go测试
 - [go mock](project/mock/README.md)
 
