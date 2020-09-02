@@ -60,6 +60,8 @@
 
 ### [断路器](../../../project/CircuitAndHystrix/README.md)
 
+### [服务发现](Service-discovery.md)
+
 ## 相关
 
 [gRPC Document](https://www.grpc.io/docs/)

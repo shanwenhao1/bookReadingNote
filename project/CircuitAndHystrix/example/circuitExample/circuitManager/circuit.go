@@ -80,6 +80,7 @@ func (cir *CircuitS) FakeMany() {
 				// ------------------------------------------------------------------------------
 			})
 			if err != nil {
+				// TODO 当发生熔断时, 可在此处定义熔断时的处理方法s
 				fmt.Println("Into Open state: ", cir.Manager.State(), "result: ", body, err)
 				return nil, err
 			}

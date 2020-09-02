@@ -1,0 +1,48 @@
+package hystrixManager
+
+import (
+	"github.com/afex/hystrix-go/hystrix"
+	"sync"
+)
+
+// 定义待执行的func, 参考hystrix包
+type runFunc func() error
+
+// 定义fallback func
+type fallbackFunc func(error) error
+
+type HystrixI interface {
+	Run(run runFunc) error
+	RunWithFallback(run runFunc, fallback runFunc) error
+}
+
+type HystrixS struct {
+	Name    string                // 执行任务的名称
+	config  hystrix.CommandConfig // hystrix CommandConfig
+	loadMap *sync.Map
+}
+
+/*
+	run: 执行的函数(熔断器监控此函数执行状态)
+*/
+func (s *HystrixS) Run(run runFunc) error {
+	if _, ok := s.loadMap.Load(s.Name); !ok {
+		s.loadMap.Store(s.Name, s.Name)
+	}
+	err := hystrix.Do(s.Name, func() error {
+		return run()
+	}, nil)
+	return err
+}
+
+func (s *HystrixS) RunWithFallback(run runFunc, fallbackFunc fallbackFunc) error {
+	if _, ok := s.loadMap.Load(s.Name); !ok {
+		s.loadMap.Store(s.Name, s.Name)
+	}
+	err := hystrix.Do(s.Name, func() error {
+		return run()
+	}, func(err error) error {
+		return fallbackFunc(err)
+	})
+	return err
+}
