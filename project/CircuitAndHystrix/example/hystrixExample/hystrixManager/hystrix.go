@@ -1,3 +1,4 @@
+//go:generate mockgen -destination ../mock_hystrixManager/hystrix_mock.go bookReadingNote/project/CircuitAndHystrix/example/hystrixExample/hystrixManager HystrixI
 package hystrixManager
 
 import (
@@ -6,14 +7,14 @@ import (
 )
 
 // 定义待执行的func, 参考hystrix包
-type runFunc func() error
+type RunFunc func() error
 
 // 定义fallback func
-type fallbackFunc func(error) error
+type FallbackFunc func(error) error
 
 type HystrixI interface {
-	Run(run runFunc) error
-	RunWithFallback(run runFunc, fallback runFunc) error
+	Run(run RunFunc) error
+	RunWithFallback(run RunFunc, fallback FallbackFunc) error
 }
 
 type HystrixS struct {
@@ -25,7 +26,7 @@ type HystrixS struct {
 /*
 	run: 执行的函数(熔断器监控此函数执行状态)
 */
-func (s *HystrixS) Run(run runFunc) error {
+func (s HystrixS) Run(run RunFunc) error {
 	if _, ok := s.loadMap.Load(s.Name); !ok {
 		s.loadMap.Store(s.Name, s.Name)
 	}
@@ -35,7 +36,7 @@ func (s *HystrixS) Run(run runFunc) error {
 	return err
 }
 
-func (s *HystrixS) RunWithFallback(run runFunc, fallbackFunc fallbackFunc) error {
+func (s HystrixS) RunWithFallback(run RunFunc, fallbackFunc FallbackFunc) error {
 	if _, ok := s.loadMap.Load(s.Name); !ok {
 		s.loadMap.Store(s.Name, s.Name)
 	}

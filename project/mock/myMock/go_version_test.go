@@ -9,6 +9,7 @@ import (
 // mock test GetGoVersion
 func TestGetGoVersion(t *testing.T) {
 	mockCtl := gomock.NewController(t)
+	defer mockCtl.Finish()
 	mockSpider := mock_spider.NewMockSpider(mockCtl)
 	// mock GetBody return
 	mockSpider.EXPECT().GetBody().Return("go1.8.3")
