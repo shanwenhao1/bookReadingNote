@@ -1,6 +1,6 @@
 # vpn client on ubuntu
 
-- 安装VPNC
+- 安装pptp客户端及配置
 ```
 apt install pptp-linux
 # 创建连接(永久), 新增后的配置写入配置文件/etc/ppp/chap-secrets中
