@@ -14,6 +14,9 @@
 
 ## 项目build组件
 
+### 服务发现
+基于[kubernetes](Kubernetes/README.md)的[Consul服务发现](microservicesPatterns/doc/chapter3/Service-discovery.md)
+
 ### Go开发
 
 #### [断路器和熔断](project/CircuitAndHystrix/README.md)
