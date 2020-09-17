@@ -8,3 +8,7 @@
 
 
 ## [kubernetes相关知识](kubernetes-knowledge/README.md)
+
+## 其他资料
+- [dokcer-k8s-elk一站式](https://www.qikqiak.com/k8s-book/)
+- [kubernetes指南](https://feisky.gitbooks.io/kubernetes/)

@@ -41,32 +41,31 @@
         - 再 `service ssh restart`(可能需要修改root密码`sudo passwd root`)
 - 网络使用桥接模式(直接复制物理机信息)
     - DHCP分配的`k8s master 1` ip为`192.168.1.112`
-    - DHCP分配的`k8s master 2` ip为`192.168.1.`
-    - DHCP分配的`k8s node 1` ip为`192.168.1.`
-    - DHCP分配的`k8s node 2` ip为`192.168.1.`
+    - DHCP分配的`k8s master 2` ip为`192.168.1.47`
+    - DHCP分配的`k8s node 1` ip为`192.168.1.179.`
+    - DHCP分配的`k8s node 2` ip为`192.168.1.146`
     - DHCP分配的`k8s node 3` ip为`192.168.1.`
 
 ### Step2: 修改节点名称(模拟域名形式)
 - 对于master节点
-    - `vim /etc/cloud/cloud.cfg`将
-    - 将`/etc/hostname`内主机名修改成`k8s_master_1`
+    - 将`/etc/hostname`内主机名修改成`k8s-master-1`
         ```bash
           # 也可用命令
-          hostnamectl set-hostname k8s_master_1
+          hostnamectl set-hostname k8s-master-1
         ```
     - 修改`/etc/hosts`
         ```bash
         # 将`127.0.1.1  ubuntu`修改成
-        127.0.1.1 hostname(k8s_master_1)
-        192.168.1.112  k8s_master_1
-        192.168.80.136  ubuntu-master-two
-        192.168.80.137  ubuntu-worker-node-1
-        192.168.80.138  ubuntu-worker-node-2
+        127.0.1.1 hostname(k8s-master-1)
+        192.168.1.112  k8s-master-1
+        192.168.1.47  k8s-master-2
+        192.168.1.179  k8s-node-1
+        192.168.1.146  k8s-node-2
         192.168.80.139  ubuntu-worker-node-3
         
         # master节点域名解析涉及负载均衡(本示例并没有实现LB, 这边只用了两台, 生产环境中至少三台) 
-        192.168.80.112  k8s.com
-        192.168.80.136  k8s.com
+        192.168.1.112  k8s.swh.com
+        192.168.1.47  k8s.swh.com
         ```
       ![](../picture/prepare/host.png)
 - 同理, 对worker node节点做同样修改, 名称可随意(如: k8s_node_1)
