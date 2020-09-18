@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 目标节点ip(支持多个节点同时操作)
-vhost="192.168.1.47"
+vhost="192.168.1.113"
 usr=root
 
 who=`whoami`

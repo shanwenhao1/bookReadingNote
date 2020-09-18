@@ -48,14 +48,7 @@ kubeadm init --config kubeadm-config.yaml
 ```
 - 成功后, 保留`kubeadm join`, 以供构建集群使用, ![](../picture/build/master-build.png)
 ```bash
-# master节点加入
-kubeadm join k8s.swh.com:6443 --token vsag22.2grzmjuyo1vrrm2h \
---discovery-token-ca-cert-hash sha256:24700c9635dc732869d1c5aab7d98e59e2fd85fb8531a6fa6ff59a2bdb63b5d3 \
---control-plane 
-
-# node节点加入
-kubeadm join k8s.swh.com:6443 --token vsag22.2grzmjuyo1vrrm2h \
-    --discovery-token-ca-cert-hash sha256:24700c9635dc732869d1c5aab7d98e59e2fd85fb8531a6fa6ff59a2bdb63b5d3
+# 如果忘记token可用命令 'kubeadmin token list'查看已有token, 或者新建新的token 
 ```
 - 将kubeConfig置入环境变量
 ```bash
@@ -80,14 +73,32 @@ source /root/.bashrc
 - 使用[脚本](sh/sync.master.ca.sh)将ca证书从源节点拷贝至其他节点
 - 使用kubeadm join命令将节点加入master集群
 ```bash
+kubeadm join k8s.swh.com:6443 --token ig43pq.rg4wlyfq883637rr \
+    --discovery-token-ca-cert-hash sha256:46e99f6347f1885a6c39a30ea6c85737385e92c5533d57f39c7e22802d68b05f \
+    --control-plane
+```
+- 添加环境变量
+    ```bash
+    echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> /root/.bashrc
+    source /root/.bashrc
+    ```
+
+### 加入其它node节点构成工作集群
+- 新节点参照上述步骤安装好docker、kubeadm、kubelet、kubectl后
+```bash
+kubeadm join k8s.swh.com:6443 --token ig43pq.rg4wlyfq883637rr \
+    --discovery-token-ca-cert-hash sha256:46e99f6347f1885a6c39a30ea6c85737385e92c5533d57f39c7e22802d68b05f
+```
+- 如果想要在节点上使用`kubectl`命令, 将`/etc/kubernetes/admin.conf`复制到节点
+```bash
+scp /etc/kubernetes/admin.conf root@192.168.1.115:/etc/kubernetes/
 # 将kubeConfig永久置入环境变量
 echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> /root/.bashrc
 source /root/.bashrc
-# 使用token作为control node加入k8s master 集群
-  # kubeadm join master
 ```
 
-### 加入其它node节点构成工作集群
+构建完成后, 我们已经搭建了好拥有2个master节点(原则上最好是奇数三个以上的master节点)和三个work节点的kubernetes集群了
+![](../picture/build/k8s-build-okay.png)
 
 
 ## 遇到的一些问题

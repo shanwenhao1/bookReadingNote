@@ -33,6 +33,13 @@
 ```
 ![](../picture/prepare/swap_off.png)
 ***
+- 固定虚拟机ip, 使用静态ip, [参考](https://www.cnblogs.com/kehoudaanxianjie/p/13139636.html)
+    - 修改`/etc/netplan`目录下的`.yaml`文件, 修改成静态ip模式
+    ![](../picture/prepare/static-ip.png)
+    ```bash
+    netplan apply
+    ```
+    
 
 本示例所使用的虚拟机
 - 创建使用[ubuntu 20.04.1](https://ubuntu.com/download/server)
@@ -41,10 +48,10 @@
         - 再 `service ssh restart`(可能需要修改root密码`sudo passwd root`)
 - 网络使用桥接模式(直接复制物理机信息)
     - DHCP分配的`k8s master 1` ip为`192.168.1.112`
-    - DHCP分配的`k8s master 2` ip为`192.168.1.47`
-    - DHCP分配的`k8s node 1` ip为`192.168.1.179.`
-    - DHCP分配的`k8s node 2` ip为`192.168.1.146`
-    - DHCP分配的`k8s node 3` ip为`192.168.1.110`
+    - DHCP分配的`k8s master 2` ip为`192.168.1.113`
+    - DHCP分配的`k8s node 1` ip为`192.168.1.115.`
+    - DHCP分配的`k8s node 2` ip为`192.168.1.116`
+    - DHCP分配的`k8s node 3` ip为`192.168.1.117`
 
 ### Step2: 修改节点名称(模拟域名形式)
 - 对于master节点
@@ -58,14 +65,14 @@
         # 将`127.0.1.1  ubuntu`修改成
         127.0.1.1 hostname(k8s-master-1)
         192.168.1.112  k8s-master-1
-        192.168.1.47  k8s-master-2
-        192.168.1.179  k8s-node-1
-        192.168.1.146  k8s-node-2
-        192.168.1.110  k8s-node-3
+        192.168.1.113  k8s-master-2
+        192.168.1.115  k8s-node-1
+        192.168.1.116  k8s-node-2
+        192.168.1.117  k8s-node-3
         
         # master节点域名解析涉及负载均衡(本示例并没有实现LB, 这边只用了两台, 生产环境中至少三台) 
         192.168.1.112  k8s.swh.com
-        192.168.1.47  k8s.swh.com
+        192.168.1.113  k8s.swh.com
         ```
       ![](../picture/prepare/host.png)
 - 同理, 对worker node节点做同样修改, 名称可随意(如: k8s_node_1)
