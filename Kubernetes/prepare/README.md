@@ -33,12 +33,6 @@
 ```
 ![](../picture/prepare/swap_off.png)
 ***
-- 固定虚拟机ip, 使用静态ip, [参考](https://www.cnblogs.com/kehoudaanxianjie/p/13139636.html)
-    - 修改`/etc/netplan`目录下的`.yaml`文件, 修改成静态ip模式
-    ![](../picture/prepare/static-ip.png)
-    ```bash
-    netplan apply
-    ```
     
 
 本示例所使用的虚拟机
@@ -46,12 +40,18 @@
     - 开启root登录
         - `vim /etc/ssh/sshd_config` 修改 `PermitRootLogin yes`(默认为#PermitRootLogin prohibit-password), 
         - 再 `service ssh restart`(可能需要修改root密码`sudo passwd root`)
-- 网络使用桥接模式(直接复制物理机信息)
-    - DHCP分配的`k8s master 1` ip为`192.168.1.112`
-    - DHCP分配的`k8s master 2` ip为`192.168.1.113`
-    - DHCP分配的`k8s node 1` ip为`192.168.1.115.`
-    - DHCP分配的`k8s node 2` ip为`192.168.1.116`
-    - DHCP分配的`k8s node 3` ip为`192.168.1.117`
+- 网络使用桥接模式(直接复制物理机信息), 创建k8s所用虚拟机
+- 固定虚拟机ip, 使用静态ip, [参考](https://www.cnblogs.com/kehoudaanxianjie/p/13139636.html)
+    - 修改`/etc/netplan`目录下的`.yaml`文件, 修改成静态ip模式
+    ![](../picture/prepare/static-ip.png)
+    ```bash
+    netplan apply
+    ```
+    - `k8s master 1` ip为`192.168.1.112`
+    - `k8s master 2` ip为`192.168.1.113`
+    - `k8s node 1` ip为`192.168.1.115.`
+    - `k8s node 2` ip为`192.168.1.116`
+    - `k8s node 3` ip为`192.168.1.117`
 
 ### Step2: 修改节点名称(模拟域名形式)
 - 对于master节点

@@ -6,6 +6,7 @@
 
 ## [kubernetes集群搭建](kubernetes-build/README.md)
 
+## [kubernetes必要插件管理]()
 
 ## [kubernetes相关知识](kubernetes-knowledge/README.md)
 
