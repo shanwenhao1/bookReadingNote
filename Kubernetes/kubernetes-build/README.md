@@ -1,6 +1,10 @@
 # Kubernetes集群搭建
 
-k8s 版本为[v1.19](https://kubernetes.io/docs/home/)
+k8s 版本为[v1.19](https://kubernetes.io/docs/home/),
+[文档](https://kubernetes.io/zh/docs/concepts/overview/components/).
+
+
+[安装指导文档](https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 ## Kubernetes集群搭建
 - 安装kubeadm、kubelet、kubectl
@@ -48,7 +52,12 @@ kubeadm init --config kubeadm-config.yaml
 ```
 - 成功后, 保留`kubeadm join`, 以供构建集群使用, ![](../picture/build/master-build.png)
 ```bash
-# 如果忘记token可用命令 'kubeadmin token list'查看已有token, 或者新建新的token 
+# 如果忘记token可用命令 'kubeadm token list'查看已有token, 或者新建新的token 
+# kubeadm join 命令格式为:
+kubeadm join --token <token> <control-plane-host>:<control-plane-port> --discovery-token-ca-cert-hash sha256:<hash>
+# 其中--discovery-token-ca-cert-hash的值可以通过以下命令获得
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | \
+   openssl dgst -sha256 -hex | sed 's/^.* //'
 ```
 - 将kubeConfig置入环境变量
 ```bash
@@ -100,6 +109,20 @@ source /root/.bashrc
 构建完成后, 我们已经搭建了好拥有2个master节点(原则上最好是奇数三个以上的master节点)和三个work节点的kubernetes集群了
 ![](../picture/build/k8s-build-okay.png)
 
+
+## 认证设置(可选)
+
+### 创建k8s集群管理用户
+- 使用[admin.yaml](yaml/admin.yaml)
+```bash
+# 创建集群管理用户admin
+kubectl appply -f admin.yaml
+# 查看admin的token信息
+kubectl get secret -n kube-system|grep admin-token
+# 获取指定token的信息(这里是admin-token)
+kubectl get secret admin-token-tj4vw -o jsonpath={.data.token} -n kube-system |base64 -d
+```
+![](../picture/build/admin-role.png)
 
 ## 遇到的一些问题
 - [root用户无法远程连接解决方案](https://blog.csdn.net/qq_35445306/article/details/78771398)

@@ -16,6 +16,7 @@
 
 ### 服务发现
 基于[kubernetes](Kubernetes/README.md)的[Consul服务发现](microservicesPatterns/doc/chapter3/Service-discovery.md)
++[traefik反向代理](Kubernetes/kubernetes-plugin/ingress/README.md#Traefik介绍)
 
 ### Go开发
 
