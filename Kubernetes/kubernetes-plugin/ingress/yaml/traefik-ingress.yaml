@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-web-ui
+  namespace: kube-system
+spec:
+  ingressClassName: "traefik-lb"
+  rules:
+  - host: k8s.swh.com
+    http:
+      paths:
+      - path: /
+        backend:
+          # serviceName对应helm install traefik定义的traefik service name
+          serviceName: traefik
+          # 端口对应 traefik.yaml 中的80端口, 如果为了预防端口更改, 可以使用端口别名
+          servicePort: 80

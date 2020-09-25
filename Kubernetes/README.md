@@ -1,10 +1,13 @@
 # Kubernetes
 
+[官方中文文档](https://kubernetes.io/zh/docs/home/
+)
 `声明`本示例`K8s集群`使用虚拟机进行搭建.
 
 ## [创建集群前准备](prepare/README.md)
 
 ## [kubernetes集群搭建](kubernetes-build/README.md)
+- [Helm Chart使用](Helm/README.md)
 
 ## [kubernetes必要插件管理](kubernetes-plugin/README.md)
 
@@ -54,6 +57,8 @@ kubectl proxy --address='0.0.0.0'  --accept-hosts='^*$'
 kubectl delete pod --grace-period=0 --force node-exporter-srzkk -n monitoring
 # 启动一个容器用以测试与其他容器的一些操作
 kubectl run  -it --rm  cirror-$RANDOM --image=cirros -- /bin/sh
+# 查看指定pod的部署yaml文件
+kubectl get po 'pod-name' -o yaml
 ```
 
 
