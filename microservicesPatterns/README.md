@@ -13,3 +13,7 @@
 ## 个人觉得要点
 
 架构的重要性在于, 它帮助应用程序满足了第二类需求: 非功能性需求(质量属性需求)
+
+
+## 相关
+[微服务模式及案例](https://microservices.io/patterns/cn/index.html)

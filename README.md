@@ -22,13 +22,20 @@
 
 #### [数据传输方案](project/dataTransmission/README.md)
 
-#### [断路器和熔断](project/CircuitAndHystrix/README.md)
+#### 通信
+- [grpc](microservicesPatterns/code/chapter3/grpcExample/README.md)
+
+[断路器和熔断](project/CircuitAndHystrix/README.md): 用于处理服务调用故障
 
 #### Go测试
 - [go mock](project/mock/README.md)
 
 ### CI/CD
 [说明文档](project/ci/README.md)
+
+
+## 开源项目研究
+- [区块链](blockChain/README~~~~.md)
 
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)
 

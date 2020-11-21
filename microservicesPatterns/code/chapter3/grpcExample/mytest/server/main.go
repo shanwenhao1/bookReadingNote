@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
+	"log"
 	"net"
 
 	pb "bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
@@ -30,5 +31,7 @@ func main() {
 	}
 	s := grpc.NewServer()
 	pb.RegisterHelloServiceServer(s, HelloService{})
-	s.Serve(lis)
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
 }
