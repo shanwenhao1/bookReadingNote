@@ -57,7 +57,8 @@
 ### 通信
 - 基于同步远程过程调用模式的通信: 如REST、gRPC
     - [gRPC](../../code/chapter3/grpcExample/README.md)
-- 基于异步消息模式的通信
+- 基于异步消息模式的通信:
+    - [基于异步消息模式的通信](syncMsg.md)
 
 ### [断路器](../../../project/CircuitAndHystrix/README.md)
 

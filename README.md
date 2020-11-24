@@ -33,6 +33,11 @@
 ### CI/CD
 [说明文档](project/ci/README.md)
 
+### 测试
+
+#### 压力测试
+[Locust](https://locust.io/)
+
 
 ## 开源项目研究
 - [区块链](blockChain/README~~~~.md)
