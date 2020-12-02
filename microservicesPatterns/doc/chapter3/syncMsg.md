@@ -31,10 +31,10 @@
 
 - 无代理消息: 服务直接交换消息. 代表[ZeroMQ](https://zeromq.org/), [文档](https://zeromq.org/get-started/)
 - 基于代理的消息: 消息代理是所有消息的中介节点. 发送方将消息写入消息代理, 消息代理将消息发送给接收方.
-    - [Kafka](http://kafka.apache.org/) 
+    - [Kafka](http://kafka.apache.org/), [本人Kafka with python](https://github.com/shanwenhao1/Kafka)
     - [RabbitMQ](https://www.rabbitmq.com/)
     - [Apache ActiveMQ](http://activemq.apache.org/)
-    - [EMQ(mqtt)](https://www.emqx.io/cn/): 物联网相关
+    - [EMQ(mqtt)](https://www.emqx.io/cn/): 物联网相关, [本人示例部署](https://github.com/shanwenhao1/EMQ)
     
 ## 处理并发和消息顺序
 

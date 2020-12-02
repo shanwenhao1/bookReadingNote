@@ -48,7 +48,7 @@ Go的Web框架大致可以分为两类
     - 令牌桶模型实际上就是对全局计数的加减法操作过程, 可以用buffered channel来完成简单的
     加令牌取令牌操作来代替加锁操作.
 
-[代码示例](tokenLimit/tokenBase.go)
+[令牌捅代码示例](tokenLimit/tokenBase.go)
 
 ## 服务瓶颈和QoS
 QoS(Quality of Service), 即服务质量, 包含:

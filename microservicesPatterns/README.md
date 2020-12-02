@@ -5,6 +5,8 @@
 - [Chapter 2 - 服务的拆分策略](doc/chapter2/README.md)
 - [Chapter 3 - 微服务架构中的进程通信](doc/chapter3/README.md)
     - [grpc](code/chapter3/grpcExample/README.md)
+- [Chapter 4 - 使用Saga管理事务(未读完)](doc/chapter4/README.md)
+- [Chapter 5 - 微服务架构中的业务逻辑设计](doc/chapter5/README.md)
 
 ## [Microservice Patterns PDF](Microservice-Patterns.pdf)
 

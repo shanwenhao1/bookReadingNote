@@ -20,12 +20,15 @@
 
 ### Go开发
 
+#### [基础设施](doc/infrastructure.md)
+
 #### [数据传输方案](project/dataTransmission/README.md)
 
 #### 通信
+- [微服务架构中的进程通信](microservicesPatterns/doc/chapter3/README.md)
 - [grpc](microservicesPatterns/code/chapter3/grpcExample/README.md)
 
-[断路器和熔断](project/CircuitAndHystrix/README.md): 用于处理服务调用故障
+服务请求限流([令牌捅](advanceGoProgram/chapter5/tokenLimit/tokenBase.go)), [断路器和熔断](project/CircuitAndHystrix/README.md): 用于处理服务调用故障
 
 #### Go测试
 - [go mock](project/mock/README.md)
@@ -40,7 +43,7 @@
 
 
 ## 开源项目研究
-- [区块链](blockChain/README~~~~.md)
+- [区块链](blockChain/README.md)
 
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)
 
