@@ -20,7 +20,9 @@
 
 ### Go开发
 
-#### [基础设施](doc/infrastructure.md)
+#### DDD
+[其他](doc/other.md)
+##### [基础设施](doc/infra.md)
 
 #### [数据传输方案](project/dataTransmission/README.md)
 
@@ -40,6 +42,9 @@
 
 #### 压力测试
 [Locust](https://locust.io/)
+
+### 负载均衡
+[目前简单的编写](advanceGoProgram/chapter6/README.md#负载均衡)
 
 
 ## 开源项目研究

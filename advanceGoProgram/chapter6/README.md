@@ -30,7 +30,7 @@
 - 实现一个支持定时发送消息的消息队列
 
 ## 分布式搜索引擎
-Elasticsearch
+Elasticsearch, [代码示例](elasticsearch/elasticsearch.go)
 
 ### 异构数据同步
 在实际应用中,我们很少直接向搜索引擎中写入数据.更为常见的方式是,将MySQL或其它关系型数据中的数据同步到搜索引擎中.
@@ -43,7 +43,7 @@ Elasticsearch
     
 ## 负载均衡
 
-常见负载均衡思路: 
+常见负载均衡思路, [代码示例](loadBalance/shuffle.go), [算法比较](loadBalance/shuffleCompare.go): 
 - 按顺序挑选
 - 随机挑选
 - 根据某种权重, 对下游节点进行排序, 选择权重最大或最小的那个
