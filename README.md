@@ -46,6 +46,7 @@
 ### 负载均衡
 [目前简单的编写](advanceGoProgram/chapter6/README.md#负载均衡)
 
+## [Go刷题练习](practice/README.md)
 
 ## 开源项目研究
 - [区块链](blockChain/README.md)
