@@ -22,7 +22,7 @@
 
 #### DDD
 [其他](doc/other.md)
-##### [基础设施](doc/infra.md)
+##### [基础设施](infra/README.md)
 
 #### [数据传输方案](project/dataTransmission/README.md)
 
