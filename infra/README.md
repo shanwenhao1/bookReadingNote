@@ -15,3 +15,6 @@
 
 ### 数据库
 - [sql Base](../advanceGoProgram/chapter5/database/sqlBase.go)
+
+### Redis
+[redis](redis/README.md)部署及使用
