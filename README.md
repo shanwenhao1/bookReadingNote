@@ -54,6 +54,6 @@
 
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)
 
-Go 1.11以后新增了[GO111MODULE](https://learnku.com/go/t/39086)用模块管理, 淘汰GoPath
+Go 1.11以后新增了[GO111MODULE](https://learnku.com/go/t/39086) 用模块管理, 淘汰GoPath
 - [Go Modules 详解使用](https://learnku.com/articles/27401)
 - [Goland使用Module](https://www.cnblogs.com/bbllw/p/12377155.html)
