@@ -1,3 +1,4 @@
+//go:generate mockgen -destination mock_xmlfile/mock_xmlfile.go bookReadingNote/infra/tool/file/xmlFile XmlFile
 package xmlFile
 
 import (
@@ -9,7 +10,7 @@ import (
 	xml file interface
 */
 type XmlFile interface {
-	loadFile(path string) ([]byte, error)
+	LoadFile(path string) ([]byte, error)
 }
 
 /*
@@ -23,7 +24,7 @@ type XmlHandle struct {
 		return []byte data if no error,
 		else return nil
 */
-func (handle XmlHandle) loadFile(path string) ([]byte, error) {
+func (handle XmlHandle) LoadFile(path string) ([]byte, error) {
 	fileD, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, err
@@ -34,18 +35,18 @@ func (handle XmlHandle) loadFile(path string) ([]byte, error) {
 /*
 	parse xml file to XmlFile interface data
 */
-func XmlParse(path string, cfgS XmlFile) (XmlFile, error) {
+func XmlParse(path string, cfgS XmlFile) error {
 	var (
 		fileD []byte
 		err   error
 	)
-	fileD, err = cfgS.loadFile(path)
+	fileD, err = cfgS.LoadFile(path)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	err = xml.Unmarshal(fileD, cfgS)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return cfgS, nil
+	return nil
 }

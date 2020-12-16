@@ -14,16 +14,23 @@ func InitServer() {
 		---------------------------本地配置文件方式加载配置----------------------------------
 	*/
 	// 加载redis 配置文件
-	xmlF, err := xmlFile.XmlParse("config/redisConfig.xml", new(xmlFile.RDConfig))
+	var xmlF = new(xmlFile.RDConfig)
+	err := xmlFile.XmlParse("config/redisConfig.xml", xmlF)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(xmlF.(*xmlFile.RDConfig))
+	//fmt.Println(xmlF.(*xmlFile.RDConfig))
 	// redis 连接初始化
 	redis.InitRedis(xmlF)
 }
 
+func redisTest() {
+	rd := new(redis.RDSHandle)
+	err := rd.SetNX("test_2", 2)
+	fmt.Println(err)
+}
+
 func main() {
 	InitServer()
-	redis.ExampleClient()
+	redisTest()
 }

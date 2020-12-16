@@ -2,8 +2,6 @@ package xmlFile
 
 import "time"
 
-var RDSCfg RDConfig
-
 /*
 	redis xml配置文件对应 struct
 */
