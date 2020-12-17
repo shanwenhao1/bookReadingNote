@@ -2,42 +2,41 @@ package xmlFile
 
 import (
 	mockXmlFile "bookReadingNote/infra/tool/file/xmlFile/mock_xmlfile"
-	"encoding/json"
-	"errors"
-	"fmt"
+	"encoding/xml"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestXmlParse(t *testing.T) {
+	a := assert.New(t)
+
 	mockCtl := gomock.NewController(t)
 	defer mockCtl.Finish()
 	mockXmlF := mockXmlFile.NewMockXmlFile(mockCtl)
-	//type testXml struct{
-	//	*mockXmlFile.MockXmlFile
-	//	TestStr		string		`xml:"test_str"`
-	//}
-	//var testS = testXml{
-	//	mockXmlF,
-	//	"test xml",
-	//}
-	//testB, err := json.Marshal(&testS)
-	//if err != nil{
-	//	panic(errors.New(fmt.Sprintf("mock test xmlStruct data []byte data failed, err: %v", err)))
-	//}
-	// mock LoadFile return
-	testB, err := json.Marshal(mockXmlF)
+
+	type testXml struct {
+		XmlHandle
+		Foo string `xml:"foo"`
+		Bar string `xml:"bar"`
+	}
+
+	// mock LoadFile data
+	var testXE = new(testXml)
+	testXE.Foo = "test foo"
+	testXE.Bar = "test bar"
+	testB, err := xml.Marshal(testXE)
 	if err != nil {
-		panic(errors.New(fmt.Sprintf("mock test xmlStruct data []byte data failed, err: %v", err)))
+		t.Error("mock test xmlStruct data []byte data failed, err: ", err)
 	}
 	mockXmlF.EXPECT().LoadFile("").Return(testB, nil)
 
 	// begin test
-	//var resultX = new(testXml)
-	err = XmlParse("", mockXmlF)
+	var testX = new(testXml)
+	err = XmlParse("", mockXmlF, testX)
 	if err != nil {
-		fmt.Println("----=+++----", err)
-		panic(err)
+		t.Error("parse xml file data to XmlFile failed, err: ", err)
 	}
-	fmt.Println("-------", mockXmlF)
+	a.Equal(testX.Foo, "test foo", "wrong parse data of XmlFile config")
+	a.Equal(testX.Bar, "test bar", "wrong parse data of XmlFile config")
 }

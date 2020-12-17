@@ -47,3 +47,7 @@ jobs:
         go test -v -coverprofile cover.out bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest
         go test -v -coverprofile cover.out bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/helloworld
 
+    - name: infraTest
+      run: |
+        go test -v -coverprofile cover.out bookReadingNote/infra/tool/file/xmlFile
+

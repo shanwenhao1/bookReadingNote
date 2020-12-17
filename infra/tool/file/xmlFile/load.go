@@ -34,8 +34,9 @@ func (handle XmlHandle) LoadFile(path string) ([]byte, error) {
 
 /*
 	parse xml file to XmlFile interface data
+	Todo fix parameter to adapt gomock test, delete the repeat parameter
 */
-func XmlParse(path string, cfgS XmlFile) error {
+func XmlParse(path string, cfgS XmlFile, data XmlFile) error {
 	var (
 		fileD []byte
 		err   error
@@ -44,7 +45,7 @@ func XmlParse(path string, cfgS XmlFile) error {
 	if err != nil {
 		return err
 	}
-	err = xml.Unmarshal(fileD, cfgS)
+	err = xml.Unmarshal(fileD, data)
 	if err != nil {
 		return err
 	}
