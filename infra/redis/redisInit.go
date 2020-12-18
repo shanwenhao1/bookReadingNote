@@ -7,10 +7,14 @@ import (
 	"errors"
 	"fmt"
 	"github.com/go-redis/redis/v8"
+	"sync"
 	"time"
 )
 
-var rdS = new(RDSClient)
+var (
+	rdS  = new(RDSClient)
+	once sync.Once
+)
 
 type RDSCle interface {
 	setClient(rds *redis.Client)
@@ -25,7 +29,10 @@ type RDSClient struct {
 	set redis client
 */
 func (rC *RDSClient) setClient(rds *redis.Client) {
-	rC.rds = rds
+	// 只允许初始化时设置
+	once.Do(func() {
+		rC.rds = rds
+	})
 }
 
 /*
