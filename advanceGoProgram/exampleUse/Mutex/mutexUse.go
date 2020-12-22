@@ -7,6 +7,9 @@ import (
 	"sync/atomic"
 )
 
+/*
+	注意使用时, copy结构体可能导致死锁
+*/
 type mutexV struct {
 	sync.Mutex
 	value int
