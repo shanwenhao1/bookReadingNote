@@ -19,6 +19,35 @@ func worker(ctx context.Context, wg *sync.WaitGroup) error {
 	}
 }
 
+/*
+	利用context控制goroutine的退出
+*/
+func contextUse() {
+	ctx, cancel := context.WithCancel(context.Background())
+
+	ch := func(ctx context.Context) <-chan int {
+		ch := make(chan int)
+		go func() {
+			for i := 0; ; i++ {
+				select {
+				case <-ctx.Done():
+					return
+				case ch <- i:
+				}
+			}
+		}()
+		return ch
+	}(ctx)
+
+	for v := range ch {
+		fmt.Println(v)
+		if v == 5 {
+			cancel()
+			break
+		}
+	}
+}
+
 func ContextRun() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 

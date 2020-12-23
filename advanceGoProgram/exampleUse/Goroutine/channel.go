@@ -33,7 +33,7 @@ func exBlockChan() {
 	fmt.Println(infoC.info)
 }
 
-func worker(name string, stopCh chan struct{}, wg *sync.WaitGroup) {
+func workerChan(name string, stopCh chan struct{}, wg *sync.WaitGroup) {
 	for {
 		select {
 		case <-stopCh:
@@ -56,7 +56,7 @@ func exExitChan() {
 
 	stopCh := make(chan struct{})
 	wg.Add(1)
-	go worker("test name", stopCh, wg)
+	go workerChan("test name", stopCh, wg)
 
 	time.Sleep(1)
 	// 发出退出goroutine信号

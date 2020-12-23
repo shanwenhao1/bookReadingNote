@@ -1,11 +1,11 @@
 package main
 
-import (
-	"bookReadingNote/advanceGoProgram/exampleUse/Goroutine"
-)
+import "bookReadingNote/advanceGoProgram/exampleUse/Goroutine"
 
 func main() {
 	//Mutex.MutExample()
 	//Goroutine.ExGoroutine()
-	Goroutine.ExChannel()
+	//Goroutine.ExChannel()
+	//Goroutine.ContextUse()
+	Goroutine.ContextLink()
 }

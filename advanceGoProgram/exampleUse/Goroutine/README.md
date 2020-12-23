@@ -24,6 +24,7 @@ Go使用CSP(communicating sequential processes)并发模型
 - 堆栈
 
 ** 各个线程之间共享程序的内存空间(也就是所在进程的空间) **
+  
 
 *********单个或多个线程切换运行:*********
 ![](pic/single_or_mul_thread.png)
@@ -42,3 +43,16 @@ Goroutine是建立在线程之上的轻量级的抽象. 以非常低的代价在
 - [goroutine基础用法](baseGoroutine.go)
 - [goroutine with channel](channel.go)
 - [goroutine with context](context.go)
+
+
+## context
+
+  每个进程和线程都有自身运行的上下文数据, 以便和其他进程和线程区分. Context指做一件事情的背景/环境/上下文/所需要的
+必要数据. 示例:
+- AppContext应用上下文, 包含整个App运行期间必要的数据
+- UserContext用户上下文, 包含一个User的上下文数据
+
+[DDD中的限界上下文](https://www.cnblogs.com/daoqidelv/p/7518533.html)
+
+[base example](../../chapter1/context.go)
+[context use example](context.go)
