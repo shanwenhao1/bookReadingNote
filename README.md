@@ -8,6 +8,8 @@
 
 ## [Microservices Patterns](microservicesPatterns/README.md)
 
+## [运维](doc/DevOps/README.md)
+
 ## 资源搜索
 - [allitebooks](http://www.allitebooks.org/)
 - [免费编程中文书籍索引大全](https://github.com/justjavac/free-programming-books-zh_CN)
@@ -21,8 +23,9 @@
 ### Go开发
 [Go 相关依赖包索引](https://godoc.org/)
 
+#### [其他](doc/other.md) 包含中间件等
+
 #### DDD
-[其他](doc/other.md)
 ##### [基础设施](infra/README.md)
 
 #### [数据传输方案](project/dataTransmission/README.md)
@@ -46,6 +49,7 @@
 
 ### 负载均衡
 [目前简单的编写](advanceGoProgram/chapter6/README.md#负载均衡)
+
 
 ## [Go刷题练习](practice/README.md)
 
