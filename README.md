@@ -8,12 +8,6 @@
 
 ## [Microservices Patterns](microservicesPatterns/README.md)
 
-## [运维](doc/DevOps/README.md)
-
-## 资源搜索
-- [allitebooks](http://www.allitebooks.org/)
-- [免费编程中文书籍索引大全](https://github.com/justjavac/free-programming-books-zh_CN)
-
 ## 项目build组件
 
 ### 服务发现
@@ -53,11 +47,17 @@
 
 ## [Go刷题练习](practice/README.md)
 
+## [运维](doc/DevOps/README.md)
+
+## 资源搜索
+- [allitebooks](http://www.allitebooks.org/)
+- [免费编程中文书籍索引大全](https://github.com/justjavac/free-programming-books-zh_CN)
+
 ## 开源项目研究
 - [区块链](blockChain/README.md)
 
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)
 
 Go 1.11以后新增了[GO111MODULE](https://learnku.com/go/t/39086) 用模块管理, 淘汰GoPath
+- [Goland Module 初始化](https://www.cnblogs.com/bbllw/p/12377155.html)
 - [Go Modules 详解使用](https://learnku.com/articles/27401)
-- [Goland使用Module](https://www.cnblogs.com/bbllw/p/12377155.html)

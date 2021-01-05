@@ -14,10 +14,18 @@ linux系统、[docker](../../../Kubernetes/prepare/docker.md)、
 
 ## 安装
 
+### docker 容器分开安装
+
+### docker-compose一键安装
 - 使用docker-compose按照[docker-compose.yml](yml/docker-compose.yml)配置文件安装gogs+drone组成CI/CD平台
-```bash
-docker-compose up -d
-```
+    ```bash
+    docker-compose up -d
+    ```
+    - (可选)也可选择分开gogs、drone安装, 方便管理
+        ```
+        docker-compose -f gogs.yml up -d
+        docker-compose -f drone.yml up -d
+        ```
 - 使用`http://192.168.1.89:3000/`进入gogs并初始化它(192.168.1.89为部署机器的内网ip), 其中
     - 数据库设置: 按照[docker-compose](yml/docker-compose.yml)中启动的数据库(数据库主机: `mysql:3306` 用户: `gogs`, 密码: `pass`)
     - 应用基本设置: 

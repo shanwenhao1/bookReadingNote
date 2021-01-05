@@ -52,6 +52,20 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo rm /usr/local/bin/docker-compose 
 ```
 
+docker-compose的使用()
+```bash
+# 根据docker-compose.yml创建服务
+docker-compose up -d
+# 启动、关闭、删除
+docker-compose start
+docker-compose stop
+docker-compose rm
+
+
+# 根据指定文件(nginx-compose.yml)创建(myweb)服务
+docker-compose -f nginx-compose.yml -p myweb up  -d
+```
+
 ### Docker Machine
 也是Docker编排项目, 基于`Go`语言实现, 可以帮助我们远程的机器上安装Docker, 或者在虚拟机host上直接安装虚拟机并在虚拟机中
 安装Docker. [官方文档](https://docs.docker.com/machine/overview/)
