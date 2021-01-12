@@ -68,4 +68,6 @@ docker相关命令
 docker images|grep none|awk '{print $3}'|xargs docker rmi
 # 批量删除状态为exited的容器
 docker rm $(docker ps -q -f status=exited)
+# docker查看latest版本号信息
+docker image inspect drone/drone | grep -i version
 ```

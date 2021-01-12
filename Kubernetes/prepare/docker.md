@@ -2,6 +2,16 @@
 
 安装docker: docker安装[脚本](docker.sh)
 
+## docker升级
+该操作不影响docker已启动的服务, 当更新完成后, 服务也相应的启动
+```bash
+apt-get update
+apt-get -y remove docker-ce docker-ce-cli containerd.io
+apt-get -y install docker-ce docker-ce-cli containerd.io
+systemctl restart docker
+```
+
+
 
 ## 搭建私有镜像仓库(进阶)
 

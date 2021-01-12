@@ -1,9 +1,13 @@
 kind: pipeline
+type: docker
 name: default
 
+# 要执行的步骤
 steps:
-  - name: test
+  - name: build
     image: golang
     commands:
       - go test
       - go build
+      # 项目添加的测试
+      - go test -v -coverprofile cover.out test/mytest

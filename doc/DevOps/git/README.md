@@ -14,7 +14,49 @@ linux系统、[docker](../../../Kubernetes/prepare/docker.md)、
 
 ## 安装
 
-### docker 容器分开安装
+两种安装方式: 
+- [docker直接安装](#docker)
+- [docker-compose一键安装](#docker-compose)
+
+### docker容器分开安装
+**注意: docker版本需要`1.40`及以上**
+
+- 安装gogs, 根据[gogs.yml](yml/gogs.yml)
+    ```bash
+        docker-compose -f gogs.yml up -d
+    ```
+- 安装drone
+    - 安装[drone server](https://docs.drone.io/server/provider/gogs/)
+    ```bash
+        docker run \
+          --volume=/var/lib/drone:/data \
+          --env=DRONE_AGENTS_ENABLED=true \
+          --env=DRONE_GOGS_SERVER=http://192.168.1.89:3000 \
+          --env=DRONE_RPC_SECRET=ALQU2M0KdptXUdTPKcEw \
+          --env=DRONE_SERVER_HOST=192.168.1.89:8080 \
+          --env=DRONE_SERVER_PROTO=http \
+          --publish=8080:80 \
+          --publish=8843:443 \
+          --restart=always \
+          --detach=true \
+          --name=drone-server \
+          drone/drone:latest  
+    ```
+    - 安装[drone runner](https://docs.drone.io/runner/overview/)
+    ```bash
+        docker pull drone/drone-runner-docker:latest
+        docker run -d \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          -e DRONE_RPC_PROTO=http \
+          -e DRONE_RPC_HOST=192.168.1.89:8080 \
+          -e DRONE_RPC_SECRET=ALQU2M0KdptXUdTPKcEw \
+          -e DRONE_RUNNER_CAPACITY=2 \
+          -e DRONE_RUNNER_NAME=${HOSTNAME} \
+          -p 7300:3000 \
+          --restart always \
+          --name drone-runner \
+          drone/drone-runner-docker:latest
+    ```
 
 ### docker-compose一键安装
 - 使用docker-compose按照[docker-compose.yml](yml/docker-compose.yml)配置文件安装gogs+drone组成CI/CD平台
