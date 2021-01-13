@@ -67,6 +67,8 @@ linux系统、[docker](../../../Kubernetes/prepare/docker.md)、
         ```
         docker-compose -f gogs.yml up -d
         docker-compose -f drone.yml up -d
+            docker-compose -f gogs.yml stop
+            docker-compose -f gogs.yml rm
         ```
 - 使用`http://192.168.1.89:3000/`进入gogs并初始化它(192.168.1.89为部署机器的内网ip), 其中
     - 数据库设置: 按照[docker-compose](yml/docker-compose.yml)中启动的数据库(数据库主机: `mysql:3306` 用户: `gogs`, 密码: `pass`)
