@@ -16,5 +16,8 @@
 
 构建完`.drone.yml`文件后, 每次更改提交后可登录drone控制台查看项目构建进度
 
+效果如下:
+![](pic/use-example/drone-run-example.png)
+
 ## 可参考
--[Drone服务初使用](https://developer.aliyun.com/article/744529)
+- [Drone服务初使用](https://developer.aliyun.com/article/744529)
