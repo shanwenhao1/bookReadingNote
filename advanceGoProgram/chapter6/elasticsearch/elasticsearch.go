@@ -3,12 +3,13 @@ package elasticsearch
 // 选用 elastic 版本时
 // 注意与自己使用的 elasticsearch 要对应
 import (
+	"fmt"
 	elastic "gopkg.in/olivere/elastic.v3"
 )
 
 var esClient *elastic.Client
 
-func initElasticsearchClient(host string, port string) {
+func InitElasticsearchClient(host string, port string) {
 	var err error
 	esClient, err = elastic.NewClient(
 		elastic.SetURL(fmt.Sprintf("http://%s:%s", host, port)),
@@ -23,7 +24,7 @@ func initElasticsearchClient(host string, port string) {
 // 插入
 func insertDocument(db string, table string, obj map[string]interface{}) {
 
-	id := obj["id"]
+	//id := obj["id"]
 
 	var indexName, typeName string
 	// 数据库中的 database/table 概念，可以简单映射到 es 的 index 和 type
@@ -35,12 +36,13 @@ func insertDocument(db string, table string, obj map[string]interface{}) {
 	typeName = table
 
 	// 正常情况
-	res, err := esClient.Index().Index(indexName).Type(typeName).Id(id).BodyJson(obj).Do()
+	res, err := esClient.Index().Index(indexName).Type(typeName).Id("id").BodyJson(obj).Do()
 	if err != nil {
 		// handle error
 	} else {
 		// insert success
 	}
+	fmt.Println("TODO handle res", res)
 }
 
 // 获取
@@ -66,12 +68,13 @@ func query(indexName string, typeName string) (*elastic.SearchResult, error) {
 
 // 删除
 func deleteDocument(indexName string, typeName string, obj map[string]interface{}) {
-	id := obj["id"]
+	//id := obj["id"]
 
-	res, err := esClient.Delete().Index(indexName).Type(typeName).Id(id).Do()
+	res, err := esClient.Delete().Index(indexName).Type(typeName).Id("id").Do()
 	if err != nil {
 		// handle error
 	} else {
 		// delete success
 	}
+	fmt.Println("TODO handle res", res)
 }

@@ -14,6 +14,10 @@
 基于[kubernetes](Kubernetes/README.md)的[Consul服务发现](microservicesPatterns/doc/chapter3/Service-discovery.md)
 +[traefik反向代理](Kubernetes/kubernetes-plugin/ingress/README.md#Traefik介绍)
 
+
+### 日志收集
+采用`EFK`进行[日志收集](doc/log/README.md)
+
 ### Go开发
 [Go 相关依赖包索引](https://godoc.org/)
 

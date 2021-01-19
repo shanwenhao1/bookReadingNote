@@ -33,6 +33,7 @@ require (
 	google.golang.org/appengine v1.6.6 // indirect
 	google.golang.org/grpc v1.31.1
 	google.golang.org/protobuf v1.25.0
+	gopkg.in/olivere/elastic.v3 v3.0.75
 	rsc.io/quote/v3 v3.1.0 // indirect
 	rsc.io/sampler v1.99.99 // indirect
 )
