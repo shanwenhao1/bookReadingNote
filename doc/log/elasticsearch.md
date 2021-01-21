@@ -1,10 +1,30 @@
 # Elasticsearch 安装及使用
 
 elasticsearch部署至少需要三个节点(一个主节点 + 两个数据节点) 构成集群.
+- 节点要关闭swap
 
 [elasticsearch各语言客户端](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
 
-
+- [配置](#configuring)
+- 安装:
+    - [docker方式安装](#docker)
+    - [docker-compose安装](#docker-compose)
+    
+## configuring
+elasticsearch的配置文件都在`/usr/share/elasticsearch/config`目录下
+```bash
+# 可使用命令查看
+docker exec -it es01 /bin/bash
+```
+----------------------------------
+~~暂时无用~~
+- [更新运行中的cluster配置](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html)
+- 本地配置文件
+    - [elasticsearch.yml](yml/elasticsearch/es-config/elasticsearch.yml) for configuring Elasticsearch
+    - [jvm.options]() for configuring Elasticsearch JVM settings
+    - [log4j2.properties]() for configuring Elasticsearch logging
+----------------------------------
+    
 ## docker方式安装
 [官方指导](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html)
 - 下载

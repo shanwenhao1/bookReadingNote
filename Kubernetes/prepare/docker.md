@@ -70,6 +70,8 @@ docker-compose up -d
 docker-compose start
 docker-compose stop
 docker-compose rm
+# 直接停止并清除
+docker-compose down
 
 
 # 根据指定文件(nginx-compose.yml)创建(myweb)服务

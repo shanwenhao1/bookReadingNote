@@ -7,3 +7,8 @@ EFK指的是[Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/refere
 
 ## 搭建
 - [elasticsearch集群搭建](elasticsearch.md)
+- [kibana搭建](kibana.md)
+
+
+## 参考
+- [elasticsearch cluster and kibana build](https://github.com/cocowool/sh-valley/tree/master/docker-conf/elasticstack/cluster)

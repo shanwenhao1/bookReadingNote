@@ -3,6 +3,7 @@ services:
   # 生产环境中elasticsearch应布置在不同的机器上
   es01:
     image: elasticsearch:7.10.1
+    hostname: es01
     container_name: es01
     environment:
       - node.name=es01
@@ -19,11 +20,13 @@ services:
       - ./data01:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+      - 9300:9300
     networks:
       - elastic
     restart: always
   es02:
     image: elasticsearch:7.10.1
+    hostname: es02
     container_name: es02
     environment:
       - node.name=es02
@@ -40,11 +43,14 @@ services:
       - ./data02:/usr/share/elasticsearch/data
 #    ports:
 #      - 9200:9200
+#      - 9300:9300
     networks:
+      # 生产环境中需要设置network， 参考 https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#modules-network
       - elastic
     restart: always
   es03:
     image: elasticsearch:7.10.1
+    hostname: es03
     container_name: es03
     environment:
       - node.name=es03
@@ -61,6 +67,7 @@ services:
       - ./data03:/usr/share/elasticsearch/data
 #    ports:
 #      - 9200:9200
+#      - 9300:9300
     networks:
       - elastic
     restart: always
