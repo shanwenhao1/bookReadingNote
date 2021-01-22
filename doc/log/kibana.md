@@ -12,7 +12,7 @@ docker run -d --link es01:elasticsearch --net elasticsearch_elastic -p 5601:5601
 
 -----或者------
 # 连接至es集群中的单个节点
-docker run -d -e ELASTICSEARCH_URL=http://192.168.1.89:9200 -p 5601:5601 --name kibana kibana:7.10.1
+docker run -d -e ELASTICSEARCH_HOSTS=http://192.168.1.89:9200 -p 5601:5601 --network host --name kibana kibana:7.10.1
 ```
 
 ## docker-compose方式安装
@@ -21,6 +21,13 @@ docker run -d -e ELASTICSEARCH_URL=http://192.168.1.89:9200 -p 5601:5601 --name 
 用[docker-compose.yml](yml/kibana/docker-compose.yml)部署
 ```bash
 docker-compose up -d
+```
+
+## 出现的问题
+提示:![](pic/kibana-problem.png)时, 
+```bash
+# 执行命令删除索引解决该问题
+curl -XDELETE http://localhost:9200/.kibana_1
 ```
 
 ## 参考

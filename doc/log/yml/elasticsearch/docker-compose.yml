@@ -1,9 +1,21 @@
 version: '3'
 services:
+  kibana:
+    image: kibana:7.10.1
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_URL=http://es01:9200
+      - I18N_LOCALE=zh-CN
+#    volumes:
+#      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - elastic
+    restart: always
   # 生产环境中elasticsearch应布置在不同的机器上
   es01:
     image: elasticsearch:7.10.1
-    hostname: es01
     container_name: es01
     environment:
       - node.name=es01
@@ -26,7 +38,6 @@ services:
     restart: always
   es02:
     image: elasticsearch:7.10.1
-    hostname: es02
     container_name: es02
     environment:
       - node.name=es02
@@ -50,7 +61,6 @@ services:
     restart: always
   es03:
     image: elasticsearch:7.10.1
-    hostname: es03
     container_name: es03
     environment:
       - node.name=es03
