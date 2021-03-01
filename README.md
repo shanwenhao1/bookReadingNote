@@ -65,3 +65,9 @@
 Go 1.11以后新增了[GO111MODULE](https://learnku.com/go/t/39086) 用模块管理, 淘汰GoPath
 - [Goland Module 初始化](https://www.cnblogs.com/bbllw/p/12377155.html)
 - [Go Modules 详解使用](https://learnku.com/articles/27401)
+```bash
+# go module 连接不到外网问题, 按照如下命令使用代理
+go env -w GOSUMDB=off
+go env -w GOPROXY=https://goproxy.cn,direct
+# https://blog.csdn.net/suoyudong/article/details/107922682
+```

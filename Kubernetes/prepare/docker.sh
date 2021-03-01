@@ -8,10 +8,16 @@ apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 ### Add Docker apt repository.
-add-apt-repository \
-  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) \
-  stable"
+#add-apt-repository \
+#  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+#  $(lsb_release -cs) \
+#  stable"
+
+# 阿里云版
+sudo add-apt-repository \
+   "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
 
 ## Install Docker CE.
 apt-get update
