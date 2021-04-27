@@ -58,6 +58,7 @@
 - [免费编程中文书籍索引大全](https://github.com/justjavac/free-programming-books-zh_CN)
 
 ## 开源项目研究
+- [bilibili kratos](https://github.com/shanwenhao1/kratosLearn) 微服务框架研究
 - [区块链](blockChain/README.md)
 
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)
