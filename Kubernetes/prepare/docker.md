@@ -1,6 +1,10 @@
 # Docker环境部署-粗略
 
 安装docker: docker安装[脚本](docker.sh)
+```bash
+# 安装
+sh docker.sh
+```
 
 ## docker升级
 该操作不影响docker已启动的服务, 当更新完成后, 服务也相应的启动

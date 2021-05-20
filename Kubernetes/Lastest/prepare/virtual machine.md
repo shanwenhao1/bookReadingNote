@@ -48,7 +48,7 @@ sudo systemctl restart sshd
 # 修改root密码
 sudo passwd root
 ```
-- 添加阿里云
+- 添加阿里源
 ```bash
 echo "deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
@@ -74,14 +74,13 @@ apt-get -y install lrzsz
         echo "# This is the network config written by 'subiquity'
         network:
           ethernets:
-              ens33:
-                  dhcp4: no
-                  addresses: [192.168.1.113/24]
-                  optional: true
-                  gateway4: 192.168.1.1
-                  nameservers:
-                          addresses: [223.5.5.5,223.6.6.6]
-        
+            ens33:
+              dhcp4: no
+              addresses: [192.168.1.113/24]
+              optional: true
+              gateway4: 192.168.1.1
+              nameservers:
+                      addresses: [223.5.5.5,223.6.6.6]
           version: 2" > /etc/netplan/00-installer-config.yaml
         
         # 应用配置
@@ -95,12 +94,13 @@ apt-get -y install lrzsz
             - `k8s node 1` ip为`192.168.1.115.`
             - `k8s node 2` ip为`192.168.1.116`
             - `k8s node 3` ip为`192.168.1.117`
-  
+            
 ### Docker安装
 [文档](../../prepare/docker.md)
 
+
 ## 安装kubeadm、kubectl、kubelet
-- Google官方源
+- Google官方源(未采用)
 ```bash
 # 更新并安装kubernetes `apt`所需包
 sudo apt-get update
@@ -114,21 +114,40 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-- 阿里源, [参考](https://developer.aliyun.com/mirror/kubernetes)
+- 阿里源, [参考](https://developer.aliyun.com/mirror/kubernetes), 
+[kubeadm_install.sh](kubeadm_install.sh)
 ```bash
-# 更新并安装kubernetes `apt`所需包
-sudo apt update && sudo apt install -y apt-transport-https curl
-curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -
-# 添加阿里源
-echo "deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-#对安装包进行签名
-sudo apt-get update
-# 安装kubeadm等
-apt-get install -y kubelet kubeadm kubectl --allow-unauthenticated
-# hold kubelet kubeadm kubectl的版本号, 不更新, 可使用unhold取消
-apt-mark hold kubelet kubeadm kubectl
-# 重启kubelet
-systemctl daemon-reload
-systemctl restart kubelet
+# 安装kubeadm、kubectl、kubelet
+sh kubeadm_install.sh
 systemctl status kubelet
+```
+- snap 安装(未采用)
+```bash
+# 参考, 未实践
+snap install kubeadm --classic
+```
+
+## 模拟域名解析
+- 将`/etc/hostname`内主机名修改成`k8s-master-1`(相应的主机改为其对应名称, k8s-master-1、k8s-master-2...)
+```bash
+# 也可用命令
+hostnamectl set-hostname k8s-master-1
+```
+- 修改`/etc/hosts`
+```bash
+127.0.1.1 k8s-master-1
+
+echo "192.168.1.112 k8s-master-1
+192.168.1.113 k8s-master-2
+192.168.1.114 k8s-master-3
+
+192.168.1.115 k8s-node-1
+192.168.1.116 k8s-node-2
+192.168.1.117 k8s-node-3
+
+# master节点域名解析涉及负载均衡(本示例并没有实现LB, 生产环境中至少三台) 
+
+192.168.1.112  k8s.swh.com
+192.168.1.113  k8s.swh.com
+192.168.1.114  k8s.swh.com" >> /etc/hosts
 ```

@@ -1,0 +1,36 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+###指定k8s的版本### 可用 kubeadm config images list 查看kubeadm对应的镜像版本
+kubernetesVersion: v1.21.1
+
+## Azure镜像仓库(已停止对外服务, 详情: http://mirror.azk8s.cn/help/gcr-proxy-cache.html)###
+#imageRepository: gcr.azk8s.cn/google_containers
+# 阿里云镜像仓库
+imageRepository: registry.aliyuncs.com/google_containers
+## 官方库, 需要vpn
+#imageRepository: k8s.gcr.io
+
+### apiServerCertSANs 填所有的masterip,lbip其它可能需要通过它访问apiserver的地址,域名或主机名等 ###
+### 如阿里fip,证书中会允许这些ip ###
+### 这里填一个自定义的域名 ###
+### 用于访问APIServer的LB,一般通过nginx或者haproxy做集群解析.可以在每台服务器做hosts映射到127.0.0.1 然后每台服务器上都安装nginx,做upstream,用于健康检查.  ###
+### 这里我为了方便,修改三台服务器上的 /etc/hosts ,把有三个master的IP都解析到 domain 的域名,hosts好像做了健康检查,代替了DNS的功能 ###
+### 第一个节点的ip是192.168.1.112
+apiServer:
+  ###添加域名的SSL证书(最好配置域名, Load Balance 到master的集群)###
+  certSANs:
+    - "127.0.0.1"
+    - "192.168.1.112"
+    - "k8s.swh.com"
+    - "k8s-master-1"
+    - "k8s-master-2"
+    - "k8s-master-3"
+
+###apiServer的集群访问地址(最好配置域名)###
+controlPlaneEndpoint: "k8s.swh.com:6443"
+
+### calico 网络插件的子网podSubnet与宿主机网段隔离 ###
+networking:
+  podSubnet: "172.16.0.0/16"
+  dnsDomain: cluster.local
+  serviceSubnet: "10.96.0.0/12"

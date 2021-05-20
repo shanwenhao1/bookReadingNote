@@ -1,8 +1,8 @@
+#!/bin/bash
 # Install Docker CE
 ## Set up the repository:
 ### Install packages to allow apt to use a repository over HTTPS
-apt-get update
-apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+apt-get update && apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 
 ### Add Docker’s official GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
@@ -15,13 +15,12 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 # 阿里云版
 sudo add-apt-repository \
-   "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+	   "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu \
+	      $(lsb_release -cs) \
+	         stable"
 
 ## Install Docker CE.
-apt-get update
-apt-get -y install docker-ce docker-ce-cli containerd.io
+apt-get update && apt-get -y install docker-ce docker-ce-cli containerd.io
 
 # Setup daemon.
 cat > /etc/docker/daemon.json <<EOF
@@ -40,3 +39,4 @@ mkdir -p /etc/systemd/system/docker.service.d
 # Restart docker.
 systemctl daemon-reload
 systemctl restart docker
+systemctl enable docker
