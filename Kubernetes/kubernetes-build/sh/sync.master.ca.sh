@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # 目标节点ip(支持多个节点同时操作)
+# vhost="192.168.1.113 192.168.1.114"
+# 或者
+# vhost="k8s-master-2 k8s-master-3"
 vhost="192.168.1.113"
 usr=root
 

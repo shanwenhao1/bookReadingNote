@@ -22,6 +22,8 @@
 ## 常用命令
 
 ```bash
+# 查看kubelet日志
+journalctl -xeu kubelet
 # 查看集群node数量
 kubectl get nodes
 # 获取node详细信息
