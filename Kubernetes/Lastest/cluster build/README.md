@@ -77,3 +77,7 @@ scp /etc/kubernetes/admin.conf root@192.168.1.115:/etc/kubernetes/
 echo "export KUBECONFIG=/etc/kubernetes/admin.conf" >> /root/.bashrc
 source /root/.bashrc
 ```
+
+
+至此, 集群初步搭建完成
+![](picture/cluster%20okay.png)

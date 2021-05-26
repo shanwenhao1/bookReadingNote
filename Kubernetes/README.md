@@ -22,6 +22,14 @@
 ## 常用命令
 
 ```bash
+# --------- 节点管理 ---------
+# 查看所有节点信息
+kubectl get nodes -o wide
+# 查看节点详细信息(节点相关的信息可对照: https://kubernetes.io/zh/docs/concepts/architecture/nodes/#condition)
+kubectl describe node k8s-node-1(node name)
+# ---------  ---------
+
+
 # 查看kubelet日志
 journalctl -xeu kubelet
 # 查看集群node数量
@@ -47,7 +55,6 @@ kubeadm token create
 # 删除某个节点, --ignore-daemonsets为master节点使用
 kubectl drain ubuntu-node-1 --delete-local-data --ignore-daemonsets
 kubectl delete node ubuntu-node-1
-kubect get nodes
 
 # 查看service信息
 kubectl get svc kubernetes -o yaml

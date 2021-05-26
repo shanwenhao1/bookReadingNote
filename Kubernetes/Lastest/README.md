@@ -3,4 +3,13 @@
 [安装前准备](prepare/README.md)
 
 ## 集群搭建
-[文档](cluster%20build/README.md)
+
+### 搭建集群
+[步骤](cluster%20build/README.md)
+
+### 集群管理
+首先, 了解kubernetes的包管理工具: [Helm Chart的使用](../Helm/README.md)
+
+[步骤](admin/README.md)
+
+## 集群

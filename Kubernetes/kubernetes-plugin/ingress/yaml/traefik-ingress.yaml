@@ -13,5 +13,5 @@ spec:
         backend:
           # serviceName对应helm install traefik定义的traefik service name
           serviceName: traefik
-          # 端口对应 traefik.yaml 中的80端口, 如果为了预防端口更改, 可以使用端口别名
+          # 端口对应 traefik-ssl.yaml 中的80端口, 如果为了预防端口更改, 可以使用端口别名
           servicePort: 80
