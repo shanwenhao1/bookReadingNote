@@ -40,29 +40,66 @@
             kubectl delete -f test-resources.yaml
             ```
 ## 使用
-这里使用ca作为cert-manager的根证书
-- 使用openssl命令生成CA证书
+
+### 实际使用
+
+#### 参考
+这里使用ca作为cert-manager的根证书, 可直接使用集群的ca证书作为这里的证书使用
+![](picture/kubernetes-ca.png)
     ```bash
-    openssl req -newkey rsa:2048 -nodes -keyout tls.key -x509 -days 365 -out tls.crt
+    cp /etc/kubernetes/pki/ca.crt ./
+    cp /etc/kubernetes/pki/ca.key ./
     ```
-    ![](picture/generate-ca.png)
+    ![](picture/ca-use.png)
 - 创建secret: `ca-key-pair`及命名空间: `cert-manager-use`
-    - 方式1: 使用[cert-manager-secret.yaml](cert-manager-secret.yaml), 将`tls.crt`、`tls.key`内的内容分别
+    - 方式1: 使用[official.yaml](official.yaml) (参考[test-resources.yaml](test-resources.yaml) 即可创建自定义证书)
+        - 将`ca.crt`、`ca.key`内的内容分别拷入至`data`. **注意要使用`64`位读取**, 
+            ```bash
+            cat ca.crt | base64 -w0
+            cat ca.key | base64 -w0
+            ```
+            ![](picture/copy-ca-to-yaml.png)
         ```bash
         kubectl apply -f cert-manager-secret.yaml
         ```
-    - 方式2: 命令行
+   
+**实际使用中根据 [official.yaml](official.yaml) 更改相应的namespace就行了, 例如`traefik`的[traefik-ca-use.yaml](../ingress/traefik-ca-use.yaml)**   
+   
+### 探索
+有两种方式:
+- 快速: 使用[cert-manager-secret.yaml](cert-manager-secret.yaml) , [参考](https://blog.csdn.net/weixin_44692256/article/details/108274385)
+    ```bash
+    kubectl apply -f cert-manager-secret.yaml
+    # 查看clusterissuer
+    kubectl get clusterissuers traefik-issuer -n cert-manager-use -o wide
+    ```
+- 官方: 创建Issuer没问题, 但是创建ClusterIssuer存在问题(未解决)
+    - 这里使用ca作为cert-manager的根证书, 可直接使用集群的ca证书作为这里的证书使用
+    ![](picture/kubernetes-ca.png)
         ```bash
-        kubectl create namespace cert-manager-use
-        kubectl create secret generic ca-key-pair --from-file=tls.crt --from-file=tls.key -n cert-manager-use
+        cp /etc/kubernetes/pki/ca.crt ./
+        cp /etc/kubernetes/pki/ca.key ./
         ```
-- 创建完成后查看
+        ![](picture/ca-use.png)
+    - 创建secret: `ca-key-pair`及命名空间: `cert-manager-use`
+        - 方式1: 使用[official.yaml](official.yaml) (参考[test-resources.yaml](test-resources.yaml) 即可创建自定义证书)
+            - 将`ca.crt`、`ca.key`内的内容分别拷入至`data`. **注意要使用`64`位读取**, 
+                ```bash
+                cat ca.crt | base64 -w0
+                cat ca.key | base64 -w0
+                ```
+                ![](picture/copy-ca-to-yaml.png)
+            ```bash
+            kubectl apply -f cert-manager-secret.yaml
+            ```
+创建完成后查看:
     ```bash
     kubectl describe secret ca-key-pair -n cert-manager-use
     # 查看证书过期时间(# TODO fix problem)
-    kubectl get -n cert-manager-use secrets ca-key-pair -o jsonpath="{.data.ca\.crt}" | base64 -d | openssl x509 -enddate -noout
+    openssl x509 -in tls.crt -noout -dates
     ```
-- 参考[test-resources.yaml](test-resources.yaml) 即可创建自定义证书
+    
+也可手动创建证书, [参考](https://kubernetes.io/zh/docs/tasks/administer-cluster/certificates/#openssl)  (不采用)
 
 ## 其他知识
 详细了解(不采用): 在颁发证书前, 你必须在集群中配置至少一个`Issuer` 或者`ClusterIssuer`(可跨命名空间使用) resource

@@ -49,7 +49,17 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
     ![](picture/dashboard%20http.png)
     
 ### 设置tls访问
-- 使用[cert-manager](../cert-manager/README.md)创建证书,
+- 使用[cert-manager](../cert-manager/README.md)创建证书, [traefik-ca-use.yaml](traefik-ca-use.yaml)
+    ```bash
+    kubectl apply -f traefik-ca-use.yaml
+    # 查看traefik-issuer, 如果是clusterissuers资源则是 kubectl get clusterissuers traefik-issuer -o wide
+    kubectl get issuers traefik-issuer -o wide
+    # 查看生成的证书secret
+    kubectl describe secret traefik-signed-cert
+    #查看签发的证书(`Certificate`资源)状态
+    kubectl describe Certificate
+    ```
+    ![](picture/tls-secret.png)
 
 
 ## 参考

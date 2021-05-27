@@ -1,24 +1,15 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: cert-manager-use
 ---
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: traefik-signed
-  namespace: cert-manager-use
-spec:
-  selfSigned: {}
----
+# 创建Certificate资源
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: selfsigned-cert
-  namespace: cert-manager-test
+  name: traefik-signed-cert
+  namespace: cert-manager-use
 spec:
+  # 要签发ssl证书的域名
   dnsNames:
-    - example.com
-  secretName: selfsigned-cert-tls
+    - k8s.swh.com
+  secretName: traefik-signed-cert-tls
   issuerRef:
-    name: test-selfsigned
+    name: cluster-issuer
+    kind: ClusterIssuer
