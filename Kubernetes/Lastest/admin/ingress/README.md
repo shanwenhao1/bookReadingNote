@@ -47,6 +47,9 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
   ![](picture/pod%20find.png)
     - 通过`http://192.168.1.116:30446`即可访问traefik的dashboard
     ![](picture/dashboard%20http.png)
+    
+### 设置tls访问
+- 使用[cert-manager](../cert-manager/README.md)创建证书,
 
 
 ## 参考
