@@ -1,12 +1,14 @@
 # 集群管理配置
 
-## 证书
+## 证书(了解就行)
 [kubernets 手动生成证书官方教程](https://kubernetes.io/zh/docs/tasks/administer-cluster/certificates/#openssl)
 
 - [cert-manager](cert-manager/README.md): 原生的kubernetes证书管理器
 
 ## ingress
 [安装](ingress/README.md)
+
+**TODO 继续** 
 
 ## Dashboard
 

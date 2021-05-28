@@ -11,5 +11,6 @@
 首先, 了解kubernetes的包管理工具: [Helm Chart的使用](../Helm/README.md)
 
 [步骤](admin/README.md)
+**TODO完善集群管理**
 
 ## 集群

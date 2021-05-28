@@ -22,6 +22,7 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
 ![](picture/traefik-architecture.png). [中文文档](https://www.qikqiak.com/traefik-book/)
 
 ### helm 部署
+[参考](https://hub.kubeapps.com/charts/traefik/traefik)
 
 #### 部署方法
 - 方式1: 不暴露`dashboard`服务部署方式
@@ -49,30 +50,49 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
   ![](picture/pod%20find.png)
     - 通过`http://192.168.1.117:32090/dashboard/`(values.yaml内使用了nodePort暴露端口)即可访问traefik的dashboard
     ![](picture/dashboard%20http.png)
+    - 因为`traefik` 默认帮我们创建了`traefik-dashboard` ingressroute
+        ```bash
+        # 可用命令查看
+        kubectl get ingressroute
+        ```
+      - 因此我们可用域名的方式, 访问在任意节点部署的traefik dashboard服务
+        - 使用ingress映射至域名访问, **注意: 因为我是在局域网内的虚拟域名, 因此需要更改windows下`hosts`文件(C:\Windows\System32\drivers\etc)**
+            ![](picture/windows-host.png)
+        - 即可通过`http://k8s.swh.com:32090/dashboard/`进入traefik的dashboard界面
+          ![](picture/traefik-ingress.png)
 
-#### 添加ingress映射
-- 使用ingress映射至域名访问, **注意: 因为我是在局域网内的虚拟域名, 因此需要更改windows下`hosts`文件(C:\Windows\System32\drivers\etc)**
-    ![](picture/windows-host.png)
-- 使用[traefik-dashboard-ingress-route.yaml](traefik-dashboard-ingress-route.yaml)添加ingress
+#### 登录访问 (暂时未实现)
+[参考BasicAuth](https://doc.traefik.io/traefik/middlewares/basicauth/)中间件
+- 配置Secret: 密码必须是一个 MD5，SHA1 或者 BCrypt 的哈希值
+```
+apt install -y apache2-utils
+htpasswd -nb swh 123456
+#swh:$apr1$Ptm4BO59$TvSwTp1UHW5JbkY1UHe0p/
+```
+
+
+### 关于tls的实践
+**`因暂不需要, 未能成功实现`**
+- 使用[traefik-dashboard-ingress-route.yaml](traefik-dashboard-ingress-route.yaml)添加ingressroute. 其中含括
+    - 创建issuer
+    - 获取Certificate证书
+    - 创建ingressroute
     ```bash
     kubectl apply -f traefik-dashboard-ingress-route.yaml
     ```
-  - 即可通过`http://k8s.swh.com:32090/dashboard/`进入traefik的dashboard界面
-  ![](picture/traefik-ingress.png)
-    
-### 设置tls访问
-- 使用[cert-manager](../cert-manager/README.md)创建证书, [traefik-ca-use.yaml](traefik-ca-use.yaml)
-    ```bash
-    kubectl apply -f traefik-ca-use.yaml
-    # 查看traefik-issuer, 如果是clusterissuers资源则是 kubectl get clusterissuers traefik-issuer -o wide
-    kubectl get issuers traefik-issuer -o wide
-    # 查看生成的证书secret
-    kubectl describe secret traefik-signed-cert
-    #查看签发的证书(`Certificate`资源)状态
-    kubectl describe Certificate
-    ```
-    ![](picture/tls-secret.png)
+        - 可通过命令查看
+          ```bash
+          kubectl apply -f traefik-ca-use.yaml
+          # 查看traefik-issuer, 如果是clusterissuers资源则是 kubectl get clusterissuers traefik-issuer -o wide
+          kubectl get issuers traefik-issuer -o wide
+          # 查看生成的证书secret
+          kubectl describe secret traefik-signed-cert
+          #查看签发的证书(`Certificate`资源)状态
+          kubectl describe Certificate
+          ```
+          ![](picture/tls-secret.png)
 
 
 ## 参考
 - [Helm3部署Traefik 2](https://www.cnblogs.com/hacker-linner/p/13632813.html)
+- [traefik 使用](https://www.soulchild.cn/2159.html)
