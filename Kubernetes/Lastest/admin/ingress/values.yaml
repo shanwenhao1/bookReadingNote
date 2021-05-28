@@ -253,6 +253,8 @@ ports:
     exposedPort: 9000
     # The port protocol (TCP/UDP)
     protocol: TCP
+    # ----------- 增加: nodePort
+    nodePort: 32090
   web:
     port: 8000
     # hostPort: 8000

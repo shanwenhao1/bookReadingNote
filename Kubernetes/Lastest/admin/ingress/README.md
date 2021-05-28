@@ -22,7 +22,9 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
 ![](picture/traefik-architecture.png). [中文文档](https://www.qikqiak.com/traefik-book/)
 
 ### helm 部署
-- 不暴露`dashboard`服务部署方式
+
+#### 部署方法
+- 方式1: 不暴露`dashboard`服务部署方式
     ```bash
     helm repo add traefik https://helm.traefik.io/traefik
     helm repo update
@@ -37,7 +39,7 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
     ```bash
     kubectl port-forward $(kubectl get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
     ```
-- 根据[values.yaml](values.yaml)自定义部署(打上`-----------`是我修改的地方), 参考[官方 values.yaml](https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml)
+- 方式2: 根据[values.yaml](values.yaml)自定义部署(打上`-----------`是我修改的地方), 参考[官方 values.yaml](https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml)
     ```bash
     helm repo add traefik https://helm.traefik.io/traefik
     helm repo update
@@ -45,8 +47,18 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
     ```
   - 访问: 通过命令`kubectl describe pod traefik`查找部署所在的节点
   ![](picture/pod%20find.png)
-    - 通过`http://192.168.1.116:30446`即可访问traefik的dashboard
+    - 通过`http://192.168.1.117:32090/dashboard/`(values.yaml内使用了nodePort暴露端口)即可访问traefik的dashboard
     ![](picture/dashboard%20http.png)
+
+#### 添加ingress映射
+- 使用ingress映射至域名访问, **注意: 因为我是在局域网内的虚拟域名, 因此需要更改windows下`hosts`文件(C:\Windows\System32\drivers\etc)**
+    ![](picture/windows-host.png)
+- 使用[traefik-dashboard-ingress-route.yaml](traefik-dashboard-ingress-route.yaml)添加ingress
+    ```bash
+    kubectl apply -f traefik-dashboard-ingress-route.yaml
+    ```
+  - 即可通过`http://k8s.swh.com:32090/dashboard/`进入traefik的dashboard界面
+  ![](picture/traefik-ingress.png)
     
 ### 设置tls访问
 - 使用[cert-manager](../cert-manager/README.md)创建证书, [traefik-ca-use.yaml](traefik-ca-use.yaml)

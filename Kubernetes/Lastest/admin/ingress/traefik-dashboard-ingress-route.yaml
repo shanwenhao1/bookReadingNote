@@ -1,0 +1,31 @@
+### 参考https://www.qikqiak.com/traefik-book/providers/kubernetes-ingress/
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: traefik-ingress
+#spec:
+#  rules:
+#    - host: k8s.swh.com
+#      http:
+#        paths:
+#          - path:
+#            backend:
+#              # traefik的service name 可用kubectl get svc traefik 查询到
+#              serviceName: traefik
+#              servicePort: 32090
+---
+# 使用ingressRoute方式
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-ingress
+spec:
+  entryPoints:
+    # 指定入口点为web。这里的web就是traefik静态配置(启动参数)中的 --entryPoints.web.address=:8000,通过仪表盘也可以看到
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`k8s.swh.com`) # 匹配规则,第三部分说明
+      services:
+        - name: traefik
+          port: 32090

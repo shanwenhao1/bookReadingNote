@@ -16,7 +16,7 @@ spec:
   ca:
     secretName: ca-key-pair
 ---
-# 创建Certificate资源
+# 创建Certificate资源, 为域名获取证书
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
