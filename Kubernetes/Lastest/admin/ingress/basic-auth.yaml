@@ -1,0 +1,36 @@
+# 用户名: swh, 密码: 123456
+apiVersion: v1
+kind: Secret
+metadata:
+  name: traefik-authsecret
+type: Opaque
+stringData:
+  users: swh:$apr1$Ptm4BO59$TvSwTp1UHW5JbkY1UHe0p/
+---
+# 声明用户列表
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-auth
+spec:
+  basicAuth:
+    secret: traefik-authsecret
+---
+# dashboard.yaml: ingressRoute暴露服务
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard
+spec:
+  entryPoints:
+    # valuse-auth.yaml中对应的 traefik dashboard 端口别名
+    - traefik
+  routes:
+    - match: Host(`k8s.swh.com`)
+      kind: Rule
+      services:
+        - name: api@internal
+          port: 32090
+          kind: TraefikService
+      middlewares:
+        - name: traefik-auth

@@ -61,15 +61,26 @@ Traefik是一款开源的反向代理与负载均衡工具(Ingress controller). 
         - 即可通过`http://k8s.swh.com:32090/dashboard/`进入traefik的dashboard界面
           ![](picture/traefik-ingress.png)
 
-#### 登录访问 (暂时未实现)
-[参考BasicAuth](https://doc.traefik.io/traefik/middlewares/basicauth/)中间件
-- 配置Secret: 密码必须是一个 MD5，SHA1 或者 BCrypt 的哈希值
+#### 设置登录访问
+- 首先重新部署traefik, 使用[values-auth.yaml](values-auth.yaml) 关闭ingressRoute, 改为后续的手动配置
+```bash
+helm uninstall traefik
+helm install traefik traefik/traefik -f values-auth.yaml
 ```
-apt install -y apache2-utils
-htpasswd -nb swh 123456
-#swh:$apr1$Ptm4BO59$TvSwTp1UHW5JbkY1UHe0p/
-```
-
+- [参考BasicAuth](https://doc.traefik.io/traefik/middlewares/basicauth/) 中间件
+    - 配置Secret: 密码必须是一个 MD5，SHA1 或者 BCrypt 的哈希值
+    ```
+    apt install -y apache2-utils
+    echo $(htpasswd -nb swh 123456) | sed -e s/\\$/\\$\\$/g
+    # 得到
+    swh:$$apr1$$LhUKazP7$$jAF0zf.bb.hVsz.kgmVPd0
+    ```
+    - 将其配置至`basic-auth.yaml`中, [basic-auth.yaml](basic-auth.yaml)
+    ```bash
+    kubectl apply -f basic-auth.yaml
+    ```
+    至此, 访问即需要验证用户访问了
+    ![](picture/ingress%20sign.png)
 
 ### 关于tls的实践
 **`因暂不需要, 未能成功实现`**

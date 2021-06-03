@@ -41,18 +41,43 @@
             ```
 ## 使用
 
-### 实际使用
+安装完`cert-manager`后必须创建`Issuer`或者`ClusterIssuer`资源作为证书认证. 
+请参考[官方指导](https://cert-manager.io/docs/configuration/) 配置不同证书来源的`Issuer`
 
-#### 参考
-这里使用ca作为cert-manager的根证书, 可直接使用集群的ca证书作为这里的证书使用
-![](picture/kubernetes-ca.png)
+### 创建issuer和clusterissuer
+**`注意: 未实践`** 生产环境中推荐使用`Let‘s Encrypt`等证书签发机构签发证书. 以[acme](https://cert-manager.io/docs/configuration/acme/) 为例:
+- 当你创建`ACME Issuer`时, cert-manager会生成一个私钥, 其用acme server验证你的信息.
+    - 使用[cert-manager-secret.yaml](cert-manager-secret.yaml)
     ```bash
-    cp /etc/kubernetes/pki/ca.crt ./
-    cp /etc/kubernetes/pki/ca.key ./
+    kubectl apply -f cert-manager-secret.yaml
     ```
-    ![](picture/ca-use.png)
+- 
+
+#### SelfSigned方式(实际使用)
+使用[official.yaml](official.yaml), [参考](https://cert-manager.io/docs/configuration/selfsigned/)
+```bash
+kubectl apply -f official.yaml
+```
+
+#### CA 证书方式(未采用)
+我们使用[ca](https://cert-manager.io/docs/configuration/ca/) 创建`Issuer`等资源
+- 生产环境中推荐使用[letsencrypt](https://letsencrypt.org/) 等机构签发的免费ssl证书  **`未能验证是否正确`**
+    - 快速(以acme为例): 使用[cert-manager-secret.yaml](cert-manager-secret.yaml) , [参考](https://blog.csdn.net/weixin_44692256/article/details/108274385)
+        ```bash
+        kubectl apply -f cert-manager-secret.yaml
+        # 查看clusterissuer
+        kubectl get clusterissuers traefik-issuer -n cert-manager-use -o wide
+        ```
+- 测试部署当中, 这里使用k8s集群的证书使用
+    ![](picture/kubernetes-ca.png)
+        ```bash
+        cp /etc/kubernetes/pki/ca.crt ./
+        cp /etc/kubernetes/pki/ca.key ./
+        ```
+        ![](picture/ca-use.png)
+    - 也可手动创建证书, [参考](https://kubernetes.io/zh/docs/tasks/administer-cluster/certificates/#openssl)  (不采用)
 - 创建secret: `ca-key-pair`及命名空间: `cert-manager-use`
-    - 方式1: 使用[official.yaml](official.yaml) (参考[test-resources.yaml](test-resources.yaml) 即可创建自定义证书)
+    - 方式1: 使用[official-ca.yaml](official-ca.yaml) (参考[test-resources.yaml](test-resources.yaml) 即可创建自定义证书)
         - 将`ca.crt`、`ca.key`内的内容分别拷入至`data`. **注意要使用`64`位读取**, 
             ```bash
             cat ca.crt | base64 -w0
@@ -60,46 +85,18 @@
             ```
             ![](picture/copy-ca-to-yaml.png)
         ```bash
-        kubectl apply -f cert-manager-secret.yaml
+        kubectl apply -f official.yaml
         ```
-   
-**实际使用中根据 [official.yaml](official.yaml) 更改相应的namespace就行了, 例如`traefik`的[traefik-ca-use.yaml](../ingress/traefik-ca-use.yaml)**   
-   
-### 探索
-有两种方式:
-- 快速: 使用[cert-manager-secret.yaml](cert-manager-secret.yaml) , [参考](https://blog.csdn.net/weixin_44692256/article/details/108274385)
-    ```bash
-    kubectl apply -f cert-manager-secret.yaml
-    # 查看clusterissuer
-    kubectl get clusterissuers traefik-issuer -n cert-manager-use -o wide
-    ```
-- 官方: 创建Issuer没问题, 但是创建ClusterIssuer存在问题(未解决)
-    - 这里使用ca作为cert-manager的根证书, 可直接使用集群的ca证书作为这里的证书使用
-    ![](picture/kubernetes-ca.png)
-        ```bash
-        cp /etc/kubernetes/pki/ca.crt ./
-        cp /etc/kubernetes/pki/ca.key ./
-        ```
-        ![](picture/ca-use.png)
-    - 创建secret: `ca-key-pair`及命名空间: `cert-manager-use`
-        - 方式1: 使用[official.yaml](official.yaml) (参考[test-resources.yaml](test-resources.yaml) 即可创建自定义证书)
-            - 将`ca.crt`、`ca.key`内的内容分别拷入至`data`. **注意要使用`64`位读取**, 
-                ```bash
-                cat ca.crt | base64 -w0
-                cat ca.key | base64 -w0
-                ```
-                ![](picture/copy-ca-to-yaml.png)
-            ```bash
-            kubectl apply -f cert-manager-secret.yaml
-            ```
-创建完成后查看:
+- 创建完成后查看:
     ```bash
     kubectl describe secret ca-key-pair -n cert-manager-use
-    # 查看证书过期时间(# TODO fix problem)
+    # 查看证书过期时间
     openssl x509 -in tls.crt -noout -dates
     ```
-    
-也可手动创建证书, [参考](https://kubernetes.io/zh/docs/tasks/administer-cluster/certificates/#openssl)  (不采用)
+  
+### 使用issuer等生成Certificate证书
+[参考](https://cert-manager.io/docs/usage/)
+
 
 ## 其他知识
 详细了解(不采用): 在颁发证书前, 你必须在集群中配置至少一个`Issuer` 或者`ClusterIssuer`(可跨命名空间使用) resource
@@ -113,4 +110,5 @@
 kubernetes集群中管理 cert-manager资源
 
 ## 参考
-- [k8s中使用cert-manager玩转证书](https://cloud.tencent.com/developer/article/1402451)
+- [cert-manager+Let‘s Encrypt自动证书签发](https://blog.csdn.net/ai524719755/article/details/116712931)
+- [k8s中使用cert-manager玩转证书-CA方式](https://cloud.tencent.com/developer/article/1402451)

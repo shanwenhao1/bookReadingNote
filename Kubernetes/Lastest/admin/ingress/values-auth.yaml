@@ -29,12 +29,12 @@ deployment:
     # image: alpine/socat:1.0.5
     # args: ["-s", "-u", "udp-recv:8125", "unix-sendto:/socket/socket"]
     # volumeMounts:
-    #   - name: dsdsocket
+  #   - name: dsdsocket
   #     mountPath: /socket
   # Additional volumes available for use with initContainers and additionalContainers
   additionalVolumes: []
     # - name: dsdsocket
-    #   hostPath:
+  #   hostPath:
   #     path: /var/run/statsd-exporter
   # Additional initContainers (e.g. for setting file permission as shown below)
   initContainers: []
@@ -44,7 +44,7 @@ deployment:
     #   image: busybox:1.31.1
     #   command: ["sh", "-c", "chmod -Rv 600 /data/*"]
     #   volumeMounts:
-    #     - name: data
+  #     - name: data
   #       mountPath: /data
   # Custom pod DNS policy. Apply if `hostNetwork: true`
   # dnsPolicy: ClusterFirstWithHostNet
@@ -88,7 +88,8 @@ experimental:
 # Create an IngressRoute for the dashboard
 ingressRoute:
   dashboard:
-    enabled: true
+    #    expose: true  ----------- 修改: 关闭ingressRoute 改为手动映射服务
+    enabled: false
     # Additional ingressRoute annotations (e.g. for kubernetes.io/ingress.class)
     annotations: {}
     # Additional ingressRoute labels (e.g. for filtering IngressRoute by custom labels)
@@ -138,7 +139,7 @@ volumes: []
 # Additional volumeMounts to add to the Traefik container
 additionalVolumeMounts: []
   # For instance when using a logshipper for access logs
-  # - name: traefik-logs
+# - name: traefik-logs
 #   mountPath: /var/log/traefik
 
 # Logs
@@ -165,7 +166,7 @@ logs:
     # Filtering https://docs.traefik.io/observability/access-logs/#filtering
     filters: {}
       # statuscodes: "200,300-302"
-      # retryattempts: true
+    # retryattempts: true
     # minduration: 10ms
     # Fields
     # https://docs.traefik.io/observability/access-logs/#limiting-the-fieldsincluding-headers
@@ -173,14 +174,14 @@ logs:
       general:
         defaultmode: keep
         names: {}
-          # Examples:
+        # Examples:
         # ClientUsername: drop
       headers:
         defaultmode: drop
         names: {}
           # Examples:
           # User-Agent: redact
-          # Authorization: drop
+        # Authorization: drop
         # Content-Type: keep
 
 globalArguments:
@@ -242,7 +243,7 @@ ports:
     # You SHOULD NOT expose the traefik port on production deployments.
     # If you want to access it from outside of your cluster,
     # use `kubectl port-forward` or create a secure ingress
-#    expose: false  ----------- 修改: 暴露dashboard端口
+    #    expose: false  ----------- 修改: 暴露dashboard端口
     expose: true
     # The exposed port for this service
     exposedPort: 9000
@@ -311,10 +312,10 @@ service:
   # type, selector or ports entries.
   spec: {}
     # externalTrafficPolicy: Cluster
-    # loadBalancerIP: "1.2.3.4"
+  # loadBalancerIP: "1.2.3.4"
   # clusterIP: "2.3.4.5"
   loadBalancerSourceRanges: []
-    # - 192.168.0.1/32
+  # - 192.168.0.1/32
   # - 172.16.0.0/16
   externalIPs: []
   # - 1.2.3.4
@@ -384,7 +385,7 @@ resources: {}
   #   cpu: "100m"
   #   memory: "50Mi"
   # limits:
-  #   cpu: "300m"
+#   cpu: "300m"
 #   memory: "150Mi"
 affinity: {}
 # # This example pod anti-affinity forces the scheduler to put traefik pods

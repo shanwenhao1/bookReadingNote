@@ -1,9 +1,16 @@
 # 集群管理配置
 
-## 证书(了解就行)
+## 证书(不使用https的话了解就行)
+
+Kubernetes集群中使用HTTPS协议, 需要以下几个部件
+- 证书管理器: 这里使用 [cert-manager](cert-manager/README.md) (原生的kubernetes证书管理器)
+- 一个证书自动签发服务: 通过ingress来发布HTTPS服务
+    - 依赖: Ingress Controller进行配置, 用来启用HTTPS及其路由
+
+
+### 参考
 [kubernets 手动生成证书官方教程](https://kubernetes.io/zh/docs/tasks/administer-cluster/certificates/#openssl)
 
-- [cert-manager](cert-manager/README.md): 原生的kubernetes证书管理器
 
 ## ingress
 [安装](ingress/README.md)

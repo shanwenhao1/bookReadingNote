@@ -1,9 +1,11 @@
 # Kubernetes
 
+[之前本人较为完善的k8s部署, 不过版本已经过时](https://github.com/shanwenhao1/k8s-learning): 后续准备全面拥抱helm chart进行实践
+
 [本人最新版本安装教程](Lastest/README.md)
+- **`声明`本示例`K8s集群`使用虚拟机进行搭建.**
 
 [官方中文文档](https://kubernetes.io/zh/docs/home/)
-`声明`本示例`K8s集群`使用虚拟机进行搭建.
 
 ## [创建集群前准备](prepare/README.md)
 
