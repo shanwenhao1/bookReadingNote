@@ -1,0 +1,7 @@
+extensions = san
+[san]
+keyUsage = digitalSignature
+extendedKeyUsage = clientAuth,serverAuth
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+subjectAltName = IP:192.168.1.112,IP:127.0.0.1,DNS:192.168.1.112,DNS:localhost

@@ -12,14 +12,15 @@ Kubernetes集群中使用HTTPS协议, 需要以下几个部件
 [kubernets 手动生成证书官方教程](https://kubernetes.io/zh/docs/tasks/administer-cluster/certificates/#openssl)
 
 
-## ingress
+## ingress控制器
 [安装](ingress/README.md)
 
-**TODO 继续** 
+## 集群管理web界面
 
-## Dashboard
-
+### Dashboard
 `Kubernetes Dashboard` 是基于网页的Kubernetes用户界面, 用于管理和浏览集群资源和应用信息.
 [官方文档](https://kubernetes.io/zh/docs/tasks/access-application-cluster/web-ui-dashboard/)
 
-[安装教程](dashboard.md)
+[安装教程](dashboard/README.md)
+
+**TODO继续**
