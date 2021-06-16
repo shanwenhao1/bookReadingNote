@@ -53,12 +53,19 @@
 [https://k8s.swh.com:32443/](https://k8s.swh.com:32443/) 管理web页面
     ```bash
     # 获取访问用的token令牌
-    kubectl describe secret dashboard-admin-token-n9bnd -n kube-system
+    kubectl describe secret dashboard-admin-token-s54s4 -n kube-system
     ```
     ![](picture/dashboard-web.png)
     ![](picture/dashboard-admin.png)
+- 由于默认创建的ServiceAccount没有访问权限, 因此我们需要创建`ClusterRoleBinding`资源给予dashboard访问权限
+[官方参考](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/README.md#admin-privileges),
+这里我们使用[dashboard-admin.yaml](dashboard-admin.yaml) 赋予admin权限
+    ```bash
+    kubectl apply -f dashboard-admin.yaml 
+    ```
+  ![](picture/rbac-okay.png)
     
     
 ## 参考
 - [官方helm install dashboard](https://github.com/kubernetes/dashboard/tree/master/aio/deploy/helm-chart/kubernetes-dashboard)
-- [通过helm安装dashboard详细教程](https://www.cnblogs.com/baoshu/p/13326480.html#head2)
+- [通过helm安装dashboard详细教程](https://www.cnblogs.com/baoshu/p/13326480.html)
