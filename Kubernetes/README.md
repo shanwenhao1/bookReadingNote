@@ -4,6 +4,7 @@
 
 [本人最新版本安装教程](Lastest/README.md)
 - **`声明`本示例`K8s集群`使用虚拟机进行搭建.**
+- [Rancher](Rancher/README.md)
 
 [官方中文文档](https://kubernetes.io/zh/docs/home/)
 

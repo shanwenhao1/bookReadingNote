@@ -13,6 +13,10 @@ import "fmt"
  * @param target int整型
  * @return int整型一维数组
 */
+
+/*
+	解题思路: 通过map操作, 降低时间复杂度
+*/
 func twoSum(numbers []int, target int) []int {
 	// write code here
 	var vMap = make(map[int]int, len(numbers))

@@ -1,5 +1,7 @@
 # 面试练习题
-[https://www.nowcoder.com/ta/job-code-high-week](https://www.nowcoder.com/ta/job-code-high-week)
+[牛客网面试最新考题 https://www.nowcoder.com/ta/job-code-high-week](https://www.nowcoder.com/ta/job-code-high-week)
+
+[Leet Code](https://leetcode-cn.com/problemset/all/)
 
 ## 二叉树相关
 - 二叉树遍历: [code](binaryTree/main.go)
@@ -12,5 +14,8 @@
 
 ## 链表相关
 - [单链表排序](LinkList/code/sortLinkList.go)
+- [反转链表](LinkList/code/reversalList.go)
 
+## 其他
 - 青蛙跳台阶问题: [code](other/code/frogSteps.go)
+- LRU缓存: [code](other/code/lruCache.go)

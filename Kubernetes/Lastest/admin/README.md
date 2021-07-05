@@ -23,4 +23,10 @@ Kubernetes集群中使用HTTPS协议, 需要以下几个部件
 
 [安装教程](dashboard/README.md)
 
+### prometheus监控报警系统
+`Prometheus` 是Google内部监控报警系统的开源版本, 是Google SRE思想不断完善的产物. 
+它是用来替代kubernetes早期的`heapster`、`influxDB`、`grafana`组合来监控系统.
+
+[文档](prometheus/README.md)
+
 **TODO继续**
