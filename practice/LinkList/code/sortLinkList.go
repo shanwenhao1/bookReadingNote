@@ -9,11 +9,6 @@ import (
  * 给定一个无序单链表，实现单链表的排序(按升序排序)。
  */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 // 升序排序
 func (list *ListNode) OrderAsc() *ListNode {
 	var tmp = []int{}
