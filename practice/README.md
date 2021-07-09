@@ -4,7 +4,8 @@
 [Leet Code](https://leetcode-cn.com/problemset/all/)
 
 ## 二叉树相关
-- 二叉树遍历: [code](binaryTree/main.go)
+- 二叉树遍历: [code](binaryTree/code/normalErgodic.go)
+- 求二叉树的层序遍历: [code](binaryTree/code/layerErgodic.go)
 
 ## 数组相关
 - 寻找数组最长不重复子串: [code](array/code/subArryLen.go)
