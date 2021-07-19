@@ -14,7 +14,8 @@
 - Hash: 高性能[MurmurHash](../advanceGoProgram/chapter5/hashFunc/hashFunc.go)
 
 ### 数据库
-- [sql Base](../advanceGoProgram/chapter5/database/sqlBase.go)
+- [go 自带sql Base](../advanceGoProgram/chapter5/database/sqlBase.go)
+- [gorm](db/README.md)
 
 ### Redis
 [redis](redis/README.md)部署及使用

@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"strconv"
+	"fmt"
 	"time"
 )
 
@@ -17,8 +17,12 @@ type TimeFormat struct {
 }
 
 // 获取当前时间时间戳(UTC与本地时区结果一致, 可使用time.Now().Unix()与GetCurTimeUtc().Unix()作对比)
-func GetCurTimeStamp() int64 {
+func GetCurTimeStamp(needMs bool) int64 {
 	curTime := time.Now().Unix()
+	if needMs {
+		// 返回13位的时间戳
+		return curTime * 1000
+	}
 	return curTime
 }
 
@@ -43,19 +47,25 @@ func SetUtcTime(timeF TimeFormat) time.Time {
 
 // 获取当前日期(str类型)
 func GetCurDate() string {
+	var (
+		monthStr string
+		dayStr   string
+	)
 	nowTime := GetCurTimeUtc()
 	year := nowTime.Year()
 	month := nowTime.Month()
-	monthStr := strconv.Itoa(int(month))
+	if month < 10 {
+		monthStr = fmt.Sprintf("0%d", month)
+	} else {
+		monthStr = fmt.Sprintf("%d", month)
+	}
 	day := nowTime.Day()
-	dayStr := strconv.Itoa(day)
-	if len(dayStr) < 2 {
-		dayStr = "0" + dayStr
+	if day < 10 {
+		dayStr = fmt.Sprintf("0%d", day)
+	} else {
+		dayStr = fmt.Sprintf("%d", day)
 	}
-	if len(monthStr) < 2 {
-		monthStr = "0" + monthStr
-	}
-	curDate := strconv.Itoa(year) + "-" + monthStr + "-" + dayStr
+	curDate := fmt.Sprintf("%d-%s-%s", year, monthStr, dayStr)
 	return curDate
 }
 
@@ -103,8 +113,26 @@ func DateTimeToStr(dateTime time.Time) string {
 	return timeStr
 }
 
+func DateTimeToTimestamp(dateTime time.Time, needMs bool) int {
+	var (
+		t       int
+		t1      time.Time
+		loc     *time.Location
+		timeStr string
+	)
+	timeStr = dateTime.Format(baseFormat)
+	// UTC为国际标准, Local为本地
+	loc, _ = time.LoadLocation("UTC")
+	t1, _ = time.ParseInLocation(baseFormat, timeStr, loc)
+	t = int(t1.Unix())
+	if needMs {
+		t = t * 1000
+	}
+	return t
+}
+
 // str时间转成标准timestamp(默认UTC)
-func StrTimeToTimestamp(timeStr string) (int, error) {
+func StrTimeToTimestamp(timeStr string, needMs bool) (int, error) {
 	var (
 		err error
 		t   int
@@ -118,15 +146,21 @@ func StrTimeToTimestamp(timeStr string) (int, error) {
 		return t, err
 	}
 	t = int(t1.Unix())
+	if needMs {
+		t = t * 1000
+	}
 	return t, nil
 }
 
 // 时间戳转化为datetime时间(返回UTC时间戳)
-func TimestampToDatetime(timestamp int) time.Time {
+func TimestampToDatetime(timestamp int, isMs bool) time.Time {
 	var (
 		t1 int64
 		t  time.Time
 	)
+	if isMs {
+		timestamp = timestamp / 1000
+	}
 	t1 = int64(timestamp)
 	t = time.Unix(t1, 0)
 	return t.UTC()
@@ -137,6 +171,6 @@ func TimestampToStrTime(timestamp int) string {
 	var (
 		timeStr string
 	)
-	timeStr = DateTimeToStr(TimestampToDatetime(timestamp))
+	timeStr = DateTimeToStr(TimestampToDatetime(timestamp, false))
 	return timeStr
 }

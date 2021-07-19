@@ -22,6 +22,9 @@
 ## 堆栈相关
 - [用两个栈实现队列](stack/code/stackQueue.go)
 
+## 数据结构
+- [只出现一次的数字](dataStruct/code/arrayOne.go)
+
 ## 其他
 - 青蛙跳台阶问题: [code](other/code/frogSteps.go)
 - LRU缓存: [code](other/code/lruCache.go)
