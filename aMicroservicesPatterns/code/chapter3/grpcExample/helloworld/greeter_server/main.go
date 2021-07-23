@@ -26,7 +26,7 @@ import (
 	"log"
 	"net"
 
-	pb "bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/helloworld/helloworld/google.golang.org/grpc/examples/helloworld/helloworld"
+	pb "bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/helloworld/helloworld/google.golang.org/grpc/examples/helloworld/helloworld"
 )
 
 const (

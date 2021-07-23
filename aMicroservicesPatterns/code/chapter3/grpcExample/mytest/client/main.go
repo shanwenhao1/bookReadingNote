@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 
-	pb "bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
+	pb "bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
 )
 
 func main() {

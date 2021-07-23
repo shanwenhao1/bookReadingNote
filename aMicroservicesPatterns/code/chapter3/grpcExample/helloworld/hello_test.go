@@ -1,8 +1,8 @@
 package helloworld
 
 import (
-	"bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/helloworld/helloworld/google.golang.org/grpc/examples/helloworld/helloworld"
-	"bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/helloworld/mock_helloworld"
+	"bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/helloworld/helloworld/google.golang.org/grpc/examples/helloworld/helloworld"
+	"bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/helloworld/mock_helloworld"
 	"context"
 	"fmt"
 	"github.com/golang/mock/gomock"

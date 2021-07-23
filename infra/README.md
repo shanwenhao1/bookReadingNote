@@ -11,10 +11,10 @@
 ## Go基础设施
 
 ### 插件相关
-- Hash: 高性能[MurmurHash](../advanceGoProgram/chapter5/hashFunc/hashFunc.go)
+- Hash: 高性能[MurmurHash](../aAdvanceGoProgram/chapter5/hashFunc/hashFunc.go)
 
 ### 数据库
-- [go 自带sql Base](../advanceGoProgram/chapter5/database/sqlBase.go)
+- [go 自带sql Base](../aAdvanceGoProgram/chapter5/database/sqlBase.go)
 - [gorm](db/README.md)
 
 ### Redis

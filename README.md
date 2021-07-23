@@ -4,14 +4,19 @@
 - `go mod init bookReadingNote`
 - 下载后的依赖存放在`$GOPATH/pkg/mod`
 
-## [Go语言高级编程](advanceGoProgram/README.md)
+## [Go语言高级编程](aAdvanceGoProgram/README.md)
+## [Go专家编程](aGoExpertProgramming/README.md)
 
-## [Microservices Patterns](microservicesPatterns/README.md)
+~~~ ## [Distributed Computing with Go](distributionComputingWithGo/README.md)
+~~~
+
+## [Microservices Patterns](aMicroservicesPatterns/README.md)
+
 
 ## 项目build组件
 
 ### 服务发现
-基于[kubernetes](Kubernetes/README.md)的[Consul服务发现](microservicesPatterns/doc/chapter3/Service-discovery.md)
+基于[kubernetes](Kubernetes/README.md)的[Consul服务发现](aMicroservicesPatterns/doc/chapter3/Service-discovery.md)
 +[traefik反向代理](Kubernetes/kubernetes-plugin/ingress/README.md#Traefik介绍)
 
 
@@ -29,10 +34,10 @@
 #### [数据传输方案](project/dataTransmission/README.md)
 
 #### 通信
-- [微服务架构中的进程通信](microservicesPatterns/doc/chapter3/README.md)
-- [grpc](microservicesPatterns/code/chapter3/grpcExample/README.md)
+- [微服务架构中的进程通信](aMicroservicesPatterns/doc/chapter3/README.md)
+- [grpc](aMicroservicesPatterns/code/chapter3/grpcExample/README.md)
 
-服务请求限流([令牌捅](advanceGoProgram/chapter5/tokenLimit/tokenBase.go)), [断路器和熔断](project/CircuitAndHystrix/README.md): 用于处理服务调用故障
+服务请求限流([令牌捅](aAdvanceGoProgram/chapter5/tokenLimit/tokenBase.go)), [断路器和熔断](project/CircuitAndHystrix/README.md): 用于处理服务调用故障
 
 #### Go测试
 - [go mock](project/mock/README.md)
@@ -46,7 +51,9 @@
 [Locust](https://locust.io/)
 
 ### 负载均衡
-[目前简单的编写](advanceGoProgram/chapter6/README.md#负载均衡)
+[目前简单的编写](aAdvanceGoProgram/chapter6/README.md#负载均衡)
+
+[Nginx](doc/DevOps/Nginx/README.md)
 
 
 ## [Go刷题练习](practice/README.md)
@@ -59,6 +66,9 @@
 
 ## 开源项目研究
 - [bilibili kratos](https://github.com/shanwenhao1/kratosLearn) 微服务框架研究
+- [即时通讯软件 tinode](https://github.com/tinode/chat)
+
+### 其他
 - [区块链](blockChain/README.md)
 
 #### [知乎网友推荐检索](https://zhuanlan.zhihu.com/p/23857699)

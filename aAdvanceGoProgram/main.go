@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bookReadingNote/advanceGoProgram/chapter6/worm"
+	"bookReadingNote/aAdvanceGoProgram/chapter6/worm"
 )
 
 func main() {

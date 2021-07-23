@@ -1,6 +1,6 @@
 package main
 
-import "bookReadingNote/advanceGoProgram/exampleUse/Goroutine"
+import "bookReadingNote/aAdvanceGoProgram/exampleUse/Goroutine"
 
 func main() {
 	//Mutex.MutExample()

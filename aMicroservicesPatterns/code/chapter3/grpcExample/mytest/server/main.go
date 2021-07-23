@@ -8,7 +8,7 @@ import (
 	"log"
 	"net"
 
-	pb "bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
+	pb "bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
 )
 
 const (

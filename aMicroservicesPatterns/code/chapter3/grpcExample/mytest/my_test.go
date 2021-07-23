@@ -1,8 +1,8 @@
 package mytest
 
 import (
-	"bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest/mock_mytest"
-	"bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
+	"bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/mytest/mock_mytest"
+	"bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/mytest/proto/test"
 	"context"
 	"fmt"
 	"github.com/golang/mock/gomock"
