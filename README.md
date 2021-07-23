@@ -5,9 +5,9 @@
 - 下载后的依赖存放在`$GOPATH/pkg/mod`
 
 ## [Go语言高级编程](aAdvanceGoProgram/README.md)
-## [Go专家编程](aGoExpertProgramming/README.md)
+## [Go专家编程](aGoExpertProgramming/README.md) (# TODO continue)
 
-~~~ ## [Distributed Computing with Go](distributionComputingWithGo/README.md)
+~~~ ## [Distributed Computing with Go](distributionComputingWithGo/README.md) (# TODO continue)
 ~~~
 
 ## [Microservices Patterns](aMicroservicesPatterns/README.md)
@@ -53,7 +53,7 @@
 ### 负载均衡
 [目前简单的编写](aAdvanceGoProgram/chapter6/README.md#负载均衡)
 
-[Nginx](doc/DevOps/Nginx/README.md)
+[Nginx](doc/DevOps/Nginx/README.md) (# TODO continue)
 
 
 ## [Go刷题练习](practice/README.md)
@@ -66,7 +66,7 @@
 
 ## 开源项目研究
 - [bilibili kratos](https://github.com/shanwenhao1/kratosLearn) 微服务框架研究
-- [即时通讯软件 tinode](https://github.com/tinode/chat)
+- [即时通讯软件 tinode](https://github.com/tinode/chat) (# TODO continue)
 
 ### 其他
 - [区块链](blockChain/README.md)

@@ -44,8 +44,8 @@ jobs:
 
     - name: gRPCTest
       run: |
-        go test -v -coverprofile cover.out bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/mytest
-        go test -v -coverprofile cover.out bookReadingNote/microservicesPatterns/code/chapter3/grpcExample/helloworld
+        go test -v -coverprofile cover.out bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/mytest
+        go test -v -coverprofile cover.out bookReadingNote/aMicroservicesPatterns/code/chapter3/grpcExample/helloworld
 
     - name: infraTest
       run: |
