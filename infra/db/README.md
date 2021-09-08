@@ -29,3 +29,5 @@ import (
 
 db.GetDS().AutoMigrate({})
 ```
+
+[Code](dbTool/db_base.go)
