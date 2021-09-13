@@ -6,8 +6,10 @@
 ## 二叉树相关
 - 二叉树遍历: [code](binaryTree/code/normalErgodic.go)
 - 求二叉树的层序遍历: [code](binaryTree/code/layerErgodic.go)
+- 二叉树中找到两个节点的最近公共祖先节点: [code](binaryTree/code/sameParent.go)
 
 ## 数组相关
+[数组与切片的关系](array/README.md)
 - 寻找数组最长不重复子串: [code](array/code/subArryLen.go)
 - 寻找数组最大子串和: [code](array/code/subArryMaxSum.go)
 - 寻找数组内两个元素和可以等于目标值的数: [code](array/code/twoSum.go)

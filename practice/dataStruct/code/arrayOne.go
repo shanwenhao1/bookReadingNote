@@ -31,4 +31,5 @@ func SingleNumber(nums []int) int {
 	解题思路:
 */
 func SingleNumberTwo(nums []int) int {
+	return 0
 }
