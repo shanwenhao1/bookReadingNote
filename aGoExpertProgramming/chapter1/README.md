@@ -79,4 +79,59 @@ type	bmap	struct	{
 
 
 ## struct
-      
+
+```go
+package main
+
+import	(
+    "reflect"
+    "fmt"
+)
+
+type	Server	struct	{
+    ServerName      string	    `key1:	"value1"	key11:"value11"`
+    ServerIP        string	    `key2:	"value2"`
+}
+
+func	main()	{
+    s	:=	Server{}
+    st	:=	reflect.TypeOf(s)
+   
+    field1	:=	st.Field(0)
+    fmt.Printf("key1:%v\n",	field1.Tag.Get("key1"))         // 输出 key1:value1
+    fmt.Printf("key11:%v\n",	field1.Tag.Get("key11"))    // 输出 key11:value11
+    filed2	:=	st.Field(1)
+    fmt.Printf("key2:%v\n",	filed2.Tag.Get("key2"))         // 输出 key2:value2
+}
+```
+
+struct 声明中允许字段附带`Tag`对字段做一些标记.
+* Tag主要用于反射场景
+* 常见的用法主要是用作JSON数据解析、ORM映射等
+    
+
+## iota
+
+
+## string
+```go
+type	stringStruct	struct	{
+    str	            unsafe.Pointer          // 字符串的首地址
+    len	            int                     // 字符串的长度
+}
+```
+string 是8比特字节的集合，通常但并不一定是UTF-8编码的文本
+* string可以为空(长度为0), 但不会是nil
+* string对象不可以修改
+
+字符串构建过程是先跟据字符串构建stringStruct，再转换成string, 其源码如下
+```go
+func	gostringnocopy(str	*byte)	string	{	//	跟据字符串地址构建string
+	ss	:=	stringStruct{str: unsafe.Pointer(str), len:	findnull(str)}	//	先构造stringStruct
+	s	:=	*(*string)(unsafe.Pointer(&ss))								//	再将stringStruct转换成string
+	return	s
+}
+```
+
+string和byte切片都可以互相转换, 但都需要进行内存拷贝(但[]byte转换成string有时不需要, 直接返回string, 该string指针指向
+切片的内存)
