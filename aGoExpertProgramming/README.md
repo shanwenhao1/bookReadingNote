@@ -12,4 +12,6 @@
 
 ### [第三章: 协程](chapter3/README.md)
 
-### [第四章: 内存管理·]()
+### [第四章: 内存管理](chapter4/README.md)
+
+### [第五章: 并发控制](chapter5/README.md)
