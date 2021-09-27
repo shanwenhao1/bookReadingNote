@@ -15,3 +15,7 @@
 ### [第四章: 内存管理](chapter4/README.md)
 
 ### [第五章: 并发控制](chapter5/README.md)
+
+### [第六章: 反射](chapter6/README.md)
+
+### [第七章: go test](chapter7/README.md)
