@@ -77,6 +77,10 @@ type	bmap	struct	{
 使用[哈希表](https://baike.baidu.com/item/%E5%93%88%E5%B8%8C%E8%A1%A8/5981869?fr=aladdin)
 作为底层实现, 一个哈希表有多个哈希表节点, 即bucket(每个bucket保存了map中的一个或一组键值对)  
 
+```go
+// 使用内置delete删除map
+delete(exampleMap, "mapKey")
+```
 
 ## struct
 

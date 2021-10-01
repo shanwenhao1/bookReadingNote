@@ -19,3 +19,9 @@
 ### [第六章: 反射](chapter6/README.md)
 
 ### [第七章: go test](chapter7/README.md)
+
+### 第八章: httptest: httptest包
+
+### [第九章: 定时器](chapter9/README.md)
+
+### [第十章: 语法糖](chapter10/README.md)

@@ -39,16 +39,20 @@
 
 服务请求限流([令牌捅](aAdvanceGoProgram/chapter5/tokenLimit/tokenBase.go)), [断路器和熔断](project/CircuitAndHystrix/README.md): 用于处理服务调用故障
 
-#### Go测试
-- [go mock](project/mock/README.md)
-
 ### CI/CD
 [说明文档](project/ci/README.md)
 
 ### 测试
+[测试详解](aGoExpertProgramming/chapter7/README.md)
+
+#### 打桩测试
+- [go mock](project/mock/README.md)
 
 #### 压力测试
 [Locust](https://locust.io/)
+
+### Go常用工具及错误分析
+[文档](doc/goError/README.md)
 
 ### 负载均衡
 [目前简单的编写](aAdvanceGoProgram/chapter6/README.md#负载均衡)
