@@ -5,7 +5,7 @@
 - 下载后的依赖存放在`$GOPATH/pkg/mod`
 
 ## [Go语言高级编程](aAdvanceGoProgram/README.md)
-## [Go专家编程](aGoExpertProgramming/README.md) (# TODO continue)
+## [Go专家编程](aGoExpertProgramming/README.md)
 
 ~~~ ## [Distributed Computing with Go](distributionComputingWithGo/README.md) (# TODO continue)
 ~~~
