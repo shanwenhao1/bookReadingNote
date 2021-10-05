@@ -12,6 +12,7 @@
 
 
 ## 华为机试题练习
+**挑选性的记录下来**
 * 字符串: 
     - 考察`strings`包使用:
         - [HJ1: 字符串最后一个单词的长度](machineTest/HJ1.go)
@@ -21,6 +22,9 @@
         - [HJ5: 进制转换](machineTest/HJ5.go)
     - 正则表达式的使用:
         - [HJ31: 单词倒排](machineTest/HJ31.go)
+    - `sort`包使用:
+        - [str sort](machineTest/strSort.go)
+    - [HJ20: 密码验证合格程序]()
 * 数组: 
     - [HJ3: 明明的随机数](machineTest/HJ3.go): 利用map(空间换时间)去重后排序
 * 数学、算法相关:
