@@ -24,8 +24,12 @@
         - [HJ31: 单词倒排](machineTest/HJ31.go)
     - `sort`包使用:
         - [str sort](machineTest/strSort.go)
-    - [HJ20: 密码验证合格程序]()
+    - `unicode`包使用:
+        - [HJ20: 密码验证合格程序](machineTest/HJ20.go)
 * 数组: 
     - [HJ3: 明明的随机数](machineTest/HJ3.go): 利用map(空间换时间)去重后排序
 * 数学、算法相关:
     - [HJ108: 求最小公倍数](machineTest/HJ108.go)
+    
+## 华为机试题
+* [分苹果问题](machineTest/hWQuestion1.go)
