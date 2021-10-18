@@ -26,6 +26,16 @@ func GetCurTimeStamp(needMs bool) int64 {
 	return curTime
 }
 
+// 获取当前时间UTC时间戳(UTC与本地时区结果一致, 可使用time.Now().Unix()与GetCurTimeUtc().Unix()作对比)
+func GetCurTimeUtcStamp(needMs bool) int64 {
+	curTime := time.Now().UTC().Unix()
+	if needMs {
+		// 返回13位的时间戳
+		return curTime * 1000
+	}
+	return curTime
+}
+
 // 获取当前时间(str类型)
 func GetCurTimeStr() string {
 	curTime := GetCurTimeUtc().Format(baseFormat)

@@ -17,6 +17,16 @@ func TestGetCurTimeStamp(t *testing.T) {
 	a.GreaterOrEqual(timestamp*1000+1000, GetCurTimeStamp(true), "GetCurTimeStamp error")
 }
 
+func TestGetCurTimeUtcStamp(t *testing.T) {
+	a := assert.New(t)
+	timestamp := time.Now().UTC().Unix()
+	a.LessOrEqual(timestamp, GetCurTimeUtcStamp(false), "GetCurTimeUtcStamp error")
+	a.GreaterOrEqual(timestamp+1, GetCurTimeUtcStamp(false), "GetCurTimeUtcStamp error")
+
+	a.LessOrEqual(timestamp*1000, GetCurTimeUtcStamp(true), "GetCurTimeUtcStamp error")
+	a.GreaterOrEqual(timestamp*1000+1000, GetCurTimeUtcStamp(true), "GetCurTimeUtcStamp error")
+}
+
 func TestGetCurTimeStr(t *testing.T) {
 	a := assert.New(t)
 
