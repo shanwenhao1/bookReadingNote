@@ -37,8 +37,8 @@ func TestGetCurTimeUtc(t *testing.T) {
 	a := assert.New(t)
 
 	timeNow := time.Now().UTC()
-	a.GreaterOrEqual(time.Second*1, GetCurTimeUtc().Sub(timeNow), "GetCurTimeUtc error")
-	a.LessOrEqual(time.Second*0, GetCurTimeUtc().Sub(timeNow), "GetCurTimeUtc error")
+	a.True(GetCurTimeUtc().Sub(timeNow) >= time.Second*0, "GetCurTimeUtc error")
+	a.True(time.Second*1 >= GetCurTimeUtc().Sub(timeNow), "GetCurTimeUtc error")
 }
 
 func TestSetUtcTime(t *testing.T) {
@@ -95,8 +95,8 @@ func TestGetAnotherTime(t *testing.T) {
 		a.GreaterOrEqual(time.Month(2), otherTime.Month(), "GetAnotherTime error")
 		a.LessOrEqual(time.Month(1), otherTime.Month(), "GetAnotherTime error")
 	} else {
-		a.LessOrEqual(time.Month(1), otherTime.Month()-timeNow.Month(), "GetAnotherTime error")
-		a.GreaterOrEqual(time.Month(2), otherTime.Month()-timeNow.Month(), "GetAnotherTime error")
+		a.True(time.Month(1) <= otherTime.Month()-timeNow.Month(), "GetAnotherTime error")
+		a.True(time.Month(2) >= otherTime.Month()-timeNow.Month(), "GetAnotherTime error")
 	}
 }
 
@@ -107,8 +107,8 @@ func TestGetTimeSub(t *testing.T) {
 	otherT := GetAnotherTime(timeNow, TimeFormat{
 		Day: 10,
 	})
-	a.LessOrEqual(time.Hour*24*10-time.Second*1, GetTimeSub(timeNow, otherT), "GetAnotherTime error")
-	a.GreaterOrEqual(time.Hour*24*101+time.Second*1, GetTimeSub(timeNow, otherT), "GetAnotherTime error")
+	a.True(time.Hour*24*10-time.Second*1 <= GetTimeSub(timeNow, otherT), "GetAnotherTime error")
+	a.True(time.Hour*24*101+time.Second*1 >= GetTimeSub(timeNow, otherT), "GetAnotherTime error")
 }
 
 func TestGetCurTimeSub(t *testing.T) {
@@ -116,8 +116,8 @@ func TestGetCurTimeSub(t *testing.T) {
 	otherT := GetAnotherTime(time.Now().UTC(), TimeFormat{
 		Day: 10,
 	})
-	a.LessOrEqual(time.Hour*24*10-time.Second*1, GetCurTimeSub(otherT), "GetCurTimeSub error")
-	a.GreaterOrEqual(time.Hour*24*10+time.Second*1, GetCurTimeSub(otherT), "GetCurTimeSub error")
+	a.True(time.Hour*24*10-time.Second*1 <= GetCurTimeSub(otherT), "GetCurTimeSub error")
+	a.True(time.Hour*24*10+time.Second*1 >= GetCurTimeSub(otherT), "GetCurTimeSub error")
 }
 
 func TestStrToDateTime(t *testing.T) {
