@@ -16,7 +16,7 @@ type TimeFormat struct {
 	Seconds int
 }
 
-// 获取当前时间时间戳(UTC与本地时区结果一致, 可使用time.Now().Unix()与GetCurTimeUtc().Unix()作对比)
+// GetCurTimeStamp 获取当前时间时间戳(UTC与本地时区结果一致, 可使用time.Now().Unix()与GetCurTimeUtc().Unix()作对比)
 func GetCurTimeStamp(needMs bool) int64 {
 	curTime := time.Now().Unix()
 	if needMs {
@@ -26,7 +26,7 @@ func GetCurTimeStamp(needMs bool) int64 {
 	return curTime
 }
 
-// 获取当前时间UTC时间戳(UTC与本地时区结果一致, 可使用time.Now().Unix()与GetCurTimeUtc().Unix()作对比)
+// GetCurTimeUtcStamp 获取当前时间UTC时间戳(UTC与本地时区结果一致, 可使用time.Now().Unix()与GetCurTimeUtc().Unix()作对比)
 func GetCurTimeUtcStamp(needMs bool) int64 {
 	curTime := time.Now().UTC().Unix()
 	if needMs {
@@ -36,26 +36,26 @@ func GetCurTimeUtcStamp(needMs bool) int64 {
 	return curTime
 }
 
-// 获取当前时间(str类型)
+// GetCurTimeStr 获取当前时间(str类型)
 func GetCurTimeStr() string {
 	curTime := GetCurTimeUtc().Format(baseFormat)
 	return curTime
 }
 
-// 获取当前时间(time.Time类型)
+// GetCurTimeUtc 获取当前时间(time.Time类型)
 func GetCurTimeUtc() time.Time {
 	curTime := time.Now().UTC()
 	return curTime
 }
 
-// 构造时间
+// SetUtcTime 构造时间
 func SetUtcTime(timeF TimeFormat) time.Time {
 	var setTime time.Time
 	setTime = time.Date(timeF.Year, timeF.Month, timeF.Day, timeF.Hour, timeF.Minute, timeF.Seconds, 0, time.UTC)
 	return setTime
 }
 
-// 获取当前日期(str类型)
+// GetCurDate 获取当前日期(str类型)
 func GetCurDate() string {
 	var (
 		monthStr string
@@ -79,7 +79,7 @@ func GetCurDate() string {
 	return curDate
 }
 
-// 获取输入时间相隔一定时间的时间
+// GetAnotherTime 获取输入时间相隔一定时间的时间
 func GetAnotherTime(beforeTime time.Time, timeMove TimeFormat) time.Time {
 	afterTime := beforeTime.AddDate(timeMove.Year, int(timeMove.Month), timeMove.Day)
 	hour := time.Duration(timeMove.Hour)
@@ -89,14 +89,14 @@ func GetAnotherTime(beforeTime time.Time, timeMove TimeFormat) time.Time {
 	return date
 }
 
-// 获取两个时间的时间差
+// GetTimeSub 获取两个时间的时间差
 func GetTimeSub(time1 time.Time, time2 time.Time) time.Duration {
 	var subD time.Duration
 	subD = time2.Sub(time1)
 	return subD
 }
 
-// 获取时间与当前时间的时间差
+// GetCurTimeSub 获取时间与当前时间的时间差
 func GetCurTimeSub(timePar time.Time) time.Duration {
 	var (
 		subD    time.Duration
@@ -107,7 +107,7 @@ func GetCurTimeSub(timePar time.Time) time.Duration {
 	return subD
 }
 
-// str时间转time.Time时间
+// StrToDateTime str时间转time.Time时间
 func StrToDateTime(strTime string) (time.Time, error) {
 	parseStrTime, err := time.Parse(baseFormat, strTime)
 	if err != nil {
@@ -116,7 +116,7 @@ func StrToDateTime(strTime string) (time.Time, error) {
 	return parseStrTime, nil
 }
 
-// time.Time时间转str时间
+// DateTimeToStr time.Time时间转str时间
 func DateTimeToStr(dateTime time.Time) string {
 	var timeStr string
 	timeStr = dateTime.Format(baseFormat)
@@ -141,7 +141,7 @@ func DateTimeToTimestamp(dateTime time.Time, needMs bool) int {
 	return t
 }
 
-// str时间转成标准timestamp(默认UTC)
+// StrTimeToTimestamp str时间转成标准timestamp(默认UTC)
 func StrTimeToTimestamp(timeStr string, needMs bool) (int, error) {
 	var (
 		err error
@@ -162,7 +162,7 @@ func StrTimeToTimestamp(timeStr string, needMs bool) (int, error) {
 	return t, nil
 }
 
-// 时间戳转化为datetime时间(返回UTC时间戳)
+// TimestampToDatetime 时间戳转化为datetime时间(返回UTC时间戳)
 func TimestampToDatetime(timestamp int, isMs bool) time.Time {
 	var (
 		t1 int64
@@ -176,7 +176,7 @@ func TimestampToDatetime(timestamp int, isMs bool) time.Time {
 	return t.UTC()
 }
 
-// 标准timestamp时间转为str时间(UTC格式)
+// TimestampToStrTime 标准timestamp时间转为str时间(UTC格式)
 func TimestampToStrTime(timestamp int) string {
 	var (
 		timeStr string
