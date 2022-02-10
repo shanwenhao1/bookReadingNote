@@ -9,6 +9,8 @@ require (
 	github.com/antchfx/xmlquery v1.2.4 // indirect
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/cbergoon/merkletree v0.2.0
+	github.com/gin-contrib/gzip v0.0.5
+	github.com/gin-gonic/gin v1.7.7
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/go-redis/redis/v8 v8.4.2
