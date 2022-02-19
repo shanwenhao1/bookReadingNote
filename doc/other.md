@@ -11,3 +11,7 @@
 二者区别[详情](../aAdvanceGoProgram/chapter6/README.md#分布式id生成器)
 
 ## 路由转发
+[代码示例](../other/routerForward/forward.go)
+
+## 文件上传和存储
+[代码示例](../other/fileUpload/fileUpload.go)
