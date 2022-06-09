@@ -22,6 +22,7 @@
 
 ### 日志收集
 采用`EFK`进行[日志收集](doc/log/README.md)
+[最新部署文档](doc/log/efk/README.md)
 
 ### Go开发
 [Go 相关依赖包索引](https://godoc.org/)
