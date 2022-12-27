@@ -1,31 +1,32 @@
 version: '3'
 
 services:
-#  filebeat:
-#    image: docker.elastic.co/beats/filebeat:7.17.1
-#    hostname: filebeat
-#    container_name: filebeat
-#    links:
-#      - "es01"
-#      - "kibana"
-#    user: root
-#    networks:
-#      - efk
-#    volumes:
-#      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-#      - /var/run/docker.sock:/var/run/docker.sock
-#      - /var/lib/docker/containers:/var/lib/docker/containers
-#    environment:
-#      - ELASTICSEARCH_HOST=http://es01:9200
-#      - KIBANA_HOST=http://kibana:5601
-#      - ELASTICSEARCH_USERNAME=elastic
-#      - ELASTICSEARCH_PASSWORD=abc123
-#      - ELASTICSEARCH_PORT=9200
-#      - KIBANA_PORT=5601
-#    depends_on:
-#      - "es01"
-#      - "kibana"
-#    restart: always
+  # filebeat: 从日志文件中收集日志
+  #  filebeat:
+  #    image: docker.elastic.co/beats/filebeat:7.17.1
+  #    hostname: filebeat
+  #    container_name: filebeat
+  #    links:
+  #      - "es01"
+  #      - "kibana"
+  #    user: root
+  #    networks:
+  #      - efk
+  #    volumes:
+  #      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+  #      - /var/run/docker.sock:/var/run/docker.sock
+  #      - /var/lib/docker/containers:/var/lib/docker/containers
+  #    environment:
+  #      - ELASTICSEARCH_HOST=http://es01:9200
+  #      - KIBANA_HOST=http://kibana:5601
+  #      - ELASTICSEARCH_USERNAME=elastic
+  #      - ELASTICSEARCH_PASSWORD=abc123
+  #      - ELASTICSEARCH_PORT=9200
+  #      - KIBANA_PORT=5601
+  #    depends_on:
+  #      - "es01"
+  #      - "kibana"
+  #    restart: always
   # kibana
   kibana:
     image: docker.elastic.co/kibana/kibana:7.17.1
@@ -60,14 +61,15 @@ services:
       # 密码
       - ELASTIC_PASSWORD=abc123
       - xpack.security.enabled=true
-#      - xpack.security.authc.api_key.enabled=true
+      #      - xpack.security.authc.api_key.enabled=true
       - xpack.monitoring.collection.enabled=false
       - xpack.license.self_generated.type=trial
       - cluster.name=es-cluster
       - node.name=es01
       - network.host=0.0.0.0
       - bootstrap.memory_lock=true
-      - ES_JAVA_OPTS=-Xmx750m -Xms750m
+      #      - 配置内存使用限制 https://www.elastic.co/guide/en/elasticsearch/reference/7.17/docker.html#docker-set-heap-size
+      - ES_JAVA_OPTS=-Xmx512m -Xms512m
     networks:
       - efk
     volumes:
