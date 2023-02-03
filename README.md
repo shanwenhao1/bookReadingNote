@@ -27,6 +27,9 @@
 ### Go开发
 [Go 相关依赖包索引](https://godoc.org/)
 
+#### Go 工具包使用
+[文档](goPkgUse/README.md)
+
 #### [其他](doc/other.md) 包含中间件等
 
 #### DDD

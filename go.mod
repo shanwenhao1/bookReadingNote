@@ -18,6 +18,7 @@ require (
 	github.com/golang/protobuf v1.4.3
 	github.com/jinzhu/gorm v1.9.16
 	github.com/juju/ratelimit v1.0.1
+	github.com/robfig/cron/v3 v3.0.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/shanwenhao1/log4go v0.0.0-20190820160110-00b7fd3ca495
 	github.com/sony/gobreaker v0.4.1
