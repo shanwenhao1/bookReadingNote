@@ -1,0 +1,10 @@
+syntax = "proto3";
+package esconf;
+
+option go_package = "bookReadingNote/infra/log/elastic/esconf;esconf";
+
+message EsConfig{
+  repeated string address = 1;  // es 连接地址
+  optional string username = 2; // es 用户名
+  optional string password = 3; // es 密码
+}

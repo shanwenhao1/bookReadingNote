@@ -22,9 +22,13 @@
 
 ### 日志收集
 采用`EFK`进行[日志收集](doc/log/README.md)
+[最新单节点部署文档](doc/log/efk/README.md), [go代码样例](infra/log/elastic/elastic_test.go) 
 
 ### Go开发
 [Go 相关依赖包索引](https://godoc.org/)
+
+#### Go 工具包使用
+[文档](goPkgUse/README.md)
 
 #### [其他](doc/other.md) 包含中间件等
 

@@ -22,8 +22,9 @@ mkdir -p /root/redis /root/redis/data /root/redis/conf
 # 启动redis, 持久化到磁盘/root/redis/data
 # docker run -d  -p 6379:6379 --name my_redis -v /root/redis/data:/data redis:latest  --appendonly yes --requirepass "PASSWD"
 
-# 启动redis, 持久化到磁盘/root/redis/data(以配置文件的方式启动)
-docker run -d --privileged=true --restart=always -p 6379:6379 --name my_redis -v /root/redis/data:/data -v /root/redis/conf/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf
+# 启动redis, 持久化到磁盘/root/redis/data(以配置文件的方式启动), 密码是abc123
+docker run -d --privileged=true --restart=always -p 6379:6379 --name my_redis -v /root/redis/data:/data -v /root/redis/conf/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf --requirepass abc123
+docker run -d --privileged=true --net=host --restart=always -p 6379:6379 --name my_redis --requirepass abc123 redis
 ```
 
 ### 访问
