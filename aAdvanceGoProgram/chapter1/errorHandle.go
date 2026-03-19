@@ -23,8 +23,9 @@ type CallerInfo struct {
 }
 
 /*
-	自定义Error接口类型, 为error接口类型的扩展
-		给错误增加调用栈信息		支持错误的多级嵌套包装			支持错误码格式
+自定义Error接口类型, 为error接口类型的扩展
+
+	给错误增加调用栈信息		支持错误的多级嵌套包装			支持错误码格式
 */
 type Error interface {
 	Caller() []CallerInfo

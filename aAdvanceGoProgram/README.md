@@ -2,6 +2,8 @@
 
 [官方在线书籍](https://chai2010.gitbooks.io/advanced-go-programming-book/)
 
+
+## [goroutine and context](chapter1/README.md)
 ## [cgo](chapter2/README.md)
 ## [Go RPC](chapter4/README.md)
 ## [Go and Web](chapter5/README.md)

@@ -1,5 +1,17 @@
 # RPC和Protobuf
 
+## proto安装
+protoc编译器不支持Go语言, 需要安装官方的
+[protoc工具](https://github.com/protocolbuffers/protobuf/releases)
+- 将解压后的bin目录下的`protoc.exe`放入`$GOPATH/bin`目录下(也可使用环境变量的方式)
+- 使用命令安装`protoc-gen-go`
+```
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
+
+**注意: 本项目中使用的一些依赖rpc放置于[rpcDepend](../../rpcDepend/README.md)**
+
 ## RPC
 RPC(Remote Procedure Call)是远程过程调用的简称, 是分布式系统中不同节点间流行的通信方式.
 
@@ -22,10 +34,29 @@ Go如何跨语言调用RPC:
 ## Protobuf 
 protobuf是谷歌公司开发的一种数据描述语言. 基本数据单元是`message`
 
-protoc编译器不支持Go语言, 需要安装官方的[protoc工具](https://github.com/protocolbuffers/protobuf/releases), 
-- 将解压后的bin目录下的`protoc.exe`放入`$GOPATH/bin`目录下(也可使用环境变量的方式)
-- 再安装代码生成插件`go get github.com/golang/protobuf/protoc-gen-go`
-    ```proto
-    // 生成Go代码
-    protoc --go_out=. hello.proto
-    ```
+示例: [hello.proto](./protobuf/helloProto/hello.proto)定义`HelloService`
+```proto
+// 生成Go代码
+// protoc --go_out=.hello.proto
+syntax = "proto3";
+
+package helloProto;
+message String{
+    string value = 1;
+}
+
+// protoc --go_out=plugins=grpc:. hello.proto
+service HelloService{
+    rpc Hello (String) returns (String);
+}
+```
+**这里我们使用了方便的go generate[自定义generate.go文件](./protobuf/helloProto/generate.go)生成方式.**
+
+也可用命令行执行
+
+```
+// --proto_path=. --proto_path=../../../../rpcDepend 自定义proto文件依赖路径,这样就可以将特定的proto依赖加入编译命令中
+protoc --proto_path=. --proto_path=../../../../rpcDepend --go_out=paths=source_relative:. --go-errors_out=paths=source_relative:. hello.proto
+```
+
+使用依赖生成proto文件的示例: [testProto](./protobuf/testProto/test.proto)

@@ -20,7 +20,7 @@ func worker(ctx context.Context, wg *sync.WaitGroup) error {
 }
 
 /*
-	利用context控制goroutine的退出
+利用context控制goroutine的退出
 */
 func contextUse() {
 	ctx, cancel := context.WithCancel(context.Background())

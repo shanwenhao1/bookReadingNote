@@ -1,10 +1,14 @@
 package main
 
 import (
-	"bookReadingNote/aAdvanceGoProgram/chapter6/worm"
+	"bookReadingNote/aAdvanceGoProgram/chapter1"
 )
 
 func main() {
+	/*
+		chapter 1
+	*/
+	chapter1.RunFunc()
 	//cgo.BaseCgo()
 	//chapter1.RunFunc()
 	//chapter1.ContextRun()
@@ -42,5 +46,5 @@ func main() {
 	//distributeLock.TryLock()
 	//loadBalance.Request()
 	//loadBalance.ShuffleCompare()
-	worm.SingleWorm()
+	//worm.SingleWorm()
 }

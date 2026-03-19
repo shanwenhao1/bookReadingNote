@@ -6,9 +6,8 @@ import (
 )
 
 /*
-	素数筛示例
+素数筛示例
 */
-
 func GenerateNatural(ctx context.Context) chan int {
 	ch := make(chan int)
 	go func() {
@@ -24,7 +23,7 @@ func GenerateNatural(ctx context.Context) chan int {
 }
 
 /*
-	通道过滤器:　删除能被素数整除的数
+通道过滤器:　删除能被素数整除的数
 */
 func PrimeFilter(ctx context.Context, in <-chan int, prime int) chan int {
 	out := make(chan int)
@@ -43,7 +42,7 @@ func PrimeFilter(ctx context.Context, in <-chan int, prime int) chan int {
 }
 
 /*
-	运行程序
+运行程序
 */
 func RunFunc() {
 	// 通过Context控制后台Goroutine状态, 防止泄漏
